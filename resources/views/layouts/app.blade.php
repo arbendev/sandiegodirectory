@@ -22,61 +22,81 @@
 <body>
     <div id="app">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 sticky-top">
-            <div class="container">
-                <a class="navbar-brand fw-bold" href="{{ url('/') }}">
-                    <img src="#" class="me-2" style="border-radius:50%" alt="San Diego Directory Logo">
-                </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 sticky-top">
+    <div class="container">
+        <div class="d-flex align-items-center w-100">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand fw-bold" href="{{ url('/') }}">
+                <img src="#" class="me-2" style="border-radius:50%" alt="Logo">
+            </a>
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            
-                <ul class="navbar-nav ms-auto">
+            <!-- Directory search bar -->
+            <form class="navbar-directory-search d-none d-md-block" action="{{ url('/search') }}" method="GET">
+                <div class="directory-search-wrapper">
+                    <input
+                        type="text"
+                        name="q"
+                        class="navbar-directory-search-input"
+                        placeholder="Searching for places, restaurants, hotels..."
+                    >
 
-                    <ul class="navbar-nav me-3">
-                        <li class="nav-item"><a class="nav-link" href="#">Businesses</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    </ul>
+                    <button type="submit" class="directory-search-btn">
+                        <span>&#128269;</span>
+                    </button>
+                </div>
+            </form>
+            <!-- /Directory search bar -->
 
-                    @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                        @endif
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item"><a class="nav-link" href="#">Businesses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+            </ul>
+        </div>
+    </div>
+</nav>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-                </div>
-            </div>
-        </nav>
 
         <main class="">
             @yield('content')
