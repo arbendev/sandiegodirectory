@@ -27,7 +27,7 @@
         <div class="d-flex align-items-center w-100">
 
             <a class="navbar-brand fw-bold" href="{{ url('/') }}">
-                <img src="#" class="me-2" style="border-radius:50%" alt="Logo">
+                <img src="/img/logo-header.png" class="me-2 img-fluid" style="height:60px;" alt="San Diego Directory">
             </a>
 
             <!-- Directory search bar -->
@@ -108,10 +108,9 @@
                     <!-- Brand / About -->
                     <div class="col-md-4">
                         <div class="d-flex align-items-center mb-2">
-                            <img src="https://via.placeholder.com/36" style="border-radius:50%" class="me-2" alt="Logo">
-                            <span class="fw-bold">San Diego Directory</span>
+                            <img src="/img/logo-footer.png" class="me-2 img-fluid" style="height:140px;">
                         </div>
-                        <p class="small mb-0">
+                        <p class="small mb-0 mt-3">
                             Discover local businesses, events, and services across San Diego. 
                             Connect with the people and places that keep the city thriving.
                         </p>
