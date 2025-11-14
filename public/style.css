@@ -1457,3 +1457,130 @@
         display: none;
     }
 }
+
+/* ---------------------------------------- */
+/* BOOTSTRAP 5 PRIMARY OVERRIDES — #05405F  */
+/* ---------------------------------------- */
+:root {
+    --bs-primary: #05405F;
+    --bs-primary-rgb: 5, 64, 95;
+
+    --bs-primary-text: #05405F;
+    --bs-primary-bg-subtle: rgba(5, 64, 95, 0.1);
+    --bs-primary-border-subtle: rgba(5, 64, 95, 0.25);
+
+    /* Secondary */
+    --bs-secondary: #E3A741;
+    --bs-secondary-rgb: 227, 167, 65;
+
+    --bs-secondary-text: #E3A741;
+    --bs-secondary-bg-subtle: rgba(227, 167, 65, 0.1);
+    --bs-secondary-border-subtle: rgba(227, 167, 65, 0.25);
+}
+
+/* ---------------------------------------- */
+/* Primary Buttons — now with white text     */
+/* ---------------------------------------- */
+.btn-primary {
+    background-color: #05405F !important;
+    border-color: #05405F !important;
+    color: #ffffff !important;   /* WHITE TEXT */
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #04364F !important;
+    border-color: #04364F !important;
+    color: #ffffff !important;   /* WHITE TEXT */
+}
+
+/* ---------------------------------------- */
+/* Secondary Buttons — now with white text   */
+/* ---------------------------------------- */
+.btn-secondary {
+    background-color: #E3A741 !important;
+    border-color: #E3A741 !important;
+    color: #ffffff !important;   /* WHITE TEXT */
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    background-color: #CB8F33 !important;
+    border-color: #CB8F33 !important;
+    color: #ffffff !important;   /* WHITE TEXT */
+}
+
+
+/* --------------------- */
+/* Links */
+/* --------------------- */
+a,
+.nav-link {
+    color: #05405F !important;
+}
+a:hover,
+.nav-link:hover {
+    color: #04364F !important;
+}
+
+/* ----------------------- */
+/* Pagination */
+/* ----------------------- */
+.page-link {
+    color: #05405F !important;
+}
+.page-item.active .page-link {
+    background-color: #05405F !important;
+    border-color: #05405F !important;
+}
+
+/* ----------------------- */
+/* Badges */
+/* ----------------------- */
+.badge-primary {
+    background-color: #05405F !important;
+}
+.badge-secondary {
+    background-color: #E3A741 !important;
+}
+
+/* ----------------------- */
+/* Alerts */
+/* ----------------------- */
+.alert-primary {
+    background-color: rgba(5, 64, 95, 0.15) !important;
+    border-color: #05405F !important;
+    color: #05405F !important;
+}
+.alert-secondary {
+    background-color: rgba(227, 167, 65, 0.15) !important;
+    border-color: #E3A741 !important;
+    color: #7F5D17 !important;
+}
+
+/* ----------------------- */
+/* Border helpers */
+/* ----------------------- */
+.border-primary {
+    border-color: #05405F !important;
+}
+.border-secondary {
+    border-color: #E3A741 !important;
+}
+
+/* ----------------------- */
+/* Background helpers */
+/* ----------------------- */
+.bg-primary {
+    background-color: #05405F !important;
+}
+.bg-secondary {
+    background-color: #E3A741 !important;
+}
+
+.text-primary {
+    color: #05405F !important;
+}
+.text-secondary {
+    color: #E3A741 !important;
+}
