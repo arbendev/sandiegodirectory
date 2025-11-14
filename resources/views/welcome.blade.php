@@ -6,8 +6,8 @@
     <div class="container">
         <h1 class="display-5 fw-bold mb-3">Discover, Connect, and Grow — <br>The Ultimate San Diego Business Hub</h1>
         <div class="mt-4">
-            <a href="#" class="btn btn-primary btn-lg me-2">Find Businesses Near You</a>
-            <a href="#" class="btn btn-warning btn-lg">Add Your Business</a>
+            <a href="#" class="btn btn-primary btn me-2">Find Businesses Near You</a>
+            <a href="#" class="btn btn-warning btn">Add Your Business</a>
         </div>
     </div>
 </section>
