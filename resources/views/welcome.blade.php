@@ -6,8 +6,8 @@
     <div class="container">
         <h1 class="display-5 fw-bold mb-3">Discover, Connect, and Grow — <br>The Ultimate San Diego Business Hub</h1>
         <div class="mt-4">
-            <a href="#" class="btn btn-primary btn me-2">Find Businesses Near You</a>
-            <a href="#" class="btn btn-warning btn">Add Your Business</a>
+            <a href="#" class="btn btn-primary btn-lg me-2">Find Businesses Near You</a>
+            <a href="#" class="btn btn-warning btn-lg">Add Your Business</a>
         </div>
     </div>
 </section>
@@ -18,9 +18,9 @@
 
     <div class="row g-4 justify-content-center">
         <div class="col-6 col-md-2">
-            <div class="category-card">
+            <a href="/category"><div class="category-card">
                 🍽️<br><strong>Restaurants</strong>
-            </div>
+            </div></a>
         </div>
         <div class="col-6 col-md-2">
             <div class="category-card">
@@ -62,11 +62,13 @@
 
                 <!-- Business 1 -->
                 <div class="card business-card border-0 shadow-sm">
+                    <a href="/profile">
                     <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Café Luna">
                     <div class="card-body">
                         <h6 class="card-title mb-1">Café Luna</h6>
                         <div class="small text-warning">★★★★★</div>
                     </div>
+                    </a>
                 </div>
 
 

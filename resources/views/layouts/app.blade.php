@@ -41,7 +41,9 @@
                     >
 
                     <button type="submit" class="directory-search-btn">
-                        <span>&#128269;</span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg></span>
                     </button>
                 </div>
             </form>
@@ -56,9 +58,8 @@
             <ul class="navbar-nav ms-auto">
 
                 <ul class="navbar-nav me-3">
-                    <li class="nav-item"><a class="nav-link" href="#">Businesses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/categories">Businesses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/events">Events</a></li>
                 </ul>
 
                 @guest
@@ -70,7 +71,7 @@
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn btn-primary" href="{{ route('register') }}">Join</a>
                         </li>
                     @endif
                 @else
@@ -120,9 +121,9 @@
                     <div class="col-md-4">
                         <h6 class="fw-bold mb-3">Quick Links</h6>
                         <ul class="list-unstyled small mb-0">
-                            <li class="mb-1"><a href="#" class="text-decoration-none text-dark">Browse Businesses</a></li>
-                            <li class="mb-1"><a href="#" class="text-decoration-none text-dark">Upcoming Events</a></li>
-                            <li class="mb-1"><a href="#" class="text-decoration-none text-dark">Add Your Business</a></li>
+                            <li class="mb-1"><a href="/categories" class="text-decoration-none text-dark">Browse Businesses</a></li>
+                            <li class="mb-1"><a href="/events" class="text-decoration-none text-dark">Upcoming Events</a></li>
+                            <li class="mb-1"><a href="/join" class="text-decoration-none text-dark">Add Your Business</a></li>
                             <li class="mb-1"><a href="#" class="text-decoration-none text-dark">Contact Us</a></li>
                         </ul>
                     </div>
@@ -152,7 +153,6 @@
                     <div class="d-flex gap-3 mt-2 mt-md-0">
                         <a href="#" class="text-decoration-none text-muted">Privacy Policy</a>
                         <a href="#" class="text-decoration-none text-muted">Terms of Service</a>
-                        <a href="#" class="text-decoration-none text-muted">Support</a>
                     </div>
                 </div>
             </div>
