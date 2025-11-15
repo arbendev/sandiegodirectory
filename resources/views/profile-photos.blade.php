@@ -47,7 +47,7 @@
                         <div>
                             <div class="section-label mb-0">Gallery</div>
                             <div class="hint-text">
-                                Add photos of your interior, exterior, menu items, staff, and events.
+                                Add photos of your interior, exterior, menu items, staff, and events. Aim for 5-12 high-quality images.
                             </div>
                         </div>
                     </div>
@@ -60,21 +60,12 @@
                                 <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80"
                                      alt="Photo 1">
                                 <div class="photo-overlay">
-                                    <div class="photo-badge">
-                                        Interior
-                                    </div>
                                     <div class="photo-actions">
-                                        <button type="button" class="btn btn-light btn-sm">
-                                            Make Cover
-                                        </button>
                                         <button type="button" class="btn btn-outline-light btn-sm">
                                             Delete
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="small text-muted mt-1">
-                                Cozy seating area
                             </div>
                         </div>
 
@@ -84,21 +75,12 @@
                                 <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80"
                                      alt="Photo 2">
                                 <div class="photo-overlay">
-                                    <div class="photo-badge">
-                                        Exterior
-                                    </div>
                                     <div class="photo-actions">
-                                        <button type="button" class="btn btn-light btn-sm">
-                                            Make Cover
-                                        </button>
                                         <button type="button" class="btn btn-outline-light btn-sm">
                                             Delete
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="small text-muted mt-1">
-                                Street view
                             </div>
                         </div>
 
@@ -108,21 +90,12 @@
                                 <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80"
                                      alt="Photo 3">
                                 <div class="photo-overlay">
-                                    <div class="photo-badge">
-                                        Food &amp; Drink
-                                    </div>
                                     <div class="photo-actions">
-                                        <button type="button" class="btn btn-light btn-sm">
-                                            Make Cover
-                                        </button>
                                         <button type="button" class="btn btn-outline-light btn-sm">
                                             Delete
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="small text-muted mt-1">
-                                Signature latte
                             </div>
                         </div>
 
@@ -132,21 +105,12 @@
                                 <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
                                      alt="Photo 4">
                                 <div class="photo-overlay">
-                                    <div class="photo-badge">
-                                        Food &amp; Drink
-                                    </div>
                                     <div class="photo-actions">
-                                        <button type="button" class="btn btn-light btn-sm">
-                                            Make Cover
-                                        </button>
                                         <button type="button" class="btn btn-outline-light btn-sm">
                                             Delete
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="small text-muted mt-1">
-                                Brunch plate
                             </div>
                         </div>
 
@@ -156,21 +120,12 @@
                                 <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"
                                      alt="Photo 5">
                                 <div class="photo-overlay">
-                                    <div class="photo-badge">
-                                        People
-                                    </div>
                                     <div class="photo-actions">
-                                        <button type="button" class="btn btn-light btn-sm">
-                                            Make Cover
-                                        </button>
                                         <button type="button" class="btn btn-outline-light btn-sm">
                                             Delete
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="small text-muted mt-1">
-                                Staff at the bar
                             </div>
                         </div>
 
@@ -180,29 +135,17 @@
                                 <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80"
                                      alt="Photo 6">
                                 <div class="photo-overlay">
-                                    <div class="photo-badge">
-                                        Interior
-                                    </div>
                                     <div class="photo-actions">
-                                        <button type="button" class="btn btn-light btn-sm">
-                                            Make Cover
-                                        </button>
                                         <button type="button" class="btn btn-outline-light btn-sm">
                                             Delete
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="small text-muted mt-1">
-                                Window seating
-                            </div>
                         </div>
 
                     </div>
 
-                    <div class="hint-text mt-2">
-                        Aim for 5-12 high-quality images.
-                    </div>
                 </div>
 
             </div>

@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="checklist-item">
-                        <div class="checklist-icon todo">1</div>
+                        <div class="checklist-icon todo">2</div>
                         <div>
                             <div class="fw-semibold small">Upload a logo and cover photo</div>
                             <div class="small text-muted">
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="checklist-item">
-                        <div class="checklist-icon todo">2</div>
+                        <div class="checklist-icon todo">3</div>
                         <div>
                             <div class="fw-semibold small">Set business hours</div>
                             <div class="small text-muted">
@@ -135,18 +135,6 @@
                         </div>
                     </div>
 
-                    <div class="checklist-item">
-                        <div class="checklist-icon todo">3</div>
-                        <div>
-                            <div class="fw-semibold small">Write a clear tagline</div>
-                            <div class="small text-muted">
-                                A short, memorable tagline helps people instantly understand what you offer.
-                            </div>
-                            <a href="#" class="btn btn-outline-primary btn-sm mt-1">
-                                Edit tagline
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -165,9 +153,6 @@
                         </a>
                         <a href="#" class="quick-link-pill">
                             🖼️ <span>Manage photos</span>
-                        </a>
-                        <a href="#" class="quick-link-pill">
-                            🕒 <span>Update hours</span>
                         </a>
                         <a href="#" class="quick-link-pill">
                             💳 <span>Manage billing</span>

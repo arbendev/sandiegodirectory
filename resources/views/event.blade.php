@@ -29,32 +29,24 @@
                     <div class="event-hero-text">
                         <div class="mb-1">
                             <span class="event-label-pill">Business &amp; Networking</span>
-                            <span class="event-label-pill">In-person</span>
                         </div>
                         <h1 class="h4 fw-bold mb-1">
                             San Diego Business Networking Mixer
                         </h1>
                         <div class="event-hero-meta">
                             📍 San Diego Convention Center · Hall B<br>
-                            ⏰ Saturday, April 13 · 6:00 PM – 9:00 PM
+                            ⏰ Saturday, April 13 · 6:00 PM - 9:00 PM
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 text-md-end">
-                    <div class="mb-2">
-                        <span class="badge bg-success rounded-pill me-1">Happening Soon</span>
-                        <span class="badge bg-light text-muted rounded-pill">Free Event</span>
-                    </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="#" class="btn btn-primary btn-sm">
-                            Get Free Ticket
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm">
-                            Add to Calendar
+                            Get Ticket
                         </a>
                     </div>
                     <div class="event-hero-meta mt-1 small">
-                        👤 Hosted by SD Business Hub · 120 people interested
+                        👤 Hosted by SD Business Hub
                     </div>
                 </div>
             </div>

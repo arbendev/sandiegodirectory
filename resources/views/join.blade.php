@@ -9,7 +9,7 @@
         <ol class="breadcrumb small mb-0">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Businesses</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Join SD Directory</li>
+            <li class="breadcrumb-item active" aria-current="page">Join the San Diego Directory</li>
         </ol>
     </nav>
 
@@ -21,7 +21,7 @@
                     <div class="mb-1">
                         <span class="join-badge">📣 Grow your local presence</span>
                     </div>
-                    <h1 class="h4 fw-bold mb-2">Join SD Directory as a Featured Business</h1>
+                    <h1 class="h4 fw-bold mb-2">Join the San Diego Directory as a Featured Business</h1>
                     <p class="small mb-0 text-muted">
                         Add your business to the ultimate San Diego local directory. Get discovered by new customers,
                         highlight reviews, list events, and showcase everything that makes your business unique.
@@ -109,7 +109,7 @@
                 <div class="section-card">
                     <div class="section-label">Account & contact person</div>
                     <p class="hint-text mb-3">
-                        This information is used to manage your listing. It won’t be publicly displayed unless you choose.
+                        This information is used to manage your listing. It won'’'t be publicly displayed unless you choose.
                     </p>
 
                     <div class="row g-3">
@@ -135,14 +135,6 @@
                                    placeholder="Re-type password">
                         </div>
 
-                        <div class="col-12">
-                            <div class="form-check small">
-                                <input class="form-check-input" type="checkbox" value="1" id="show_contact_public">
-                                <label class="form-check-label" for="show_contact_public">
-                                    Show business phone and website publicly on my listing.
-                                </label>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -254,7 +246,7 @@
                     </div>
 
                     <div class="secure-text mb-2">
-                        🔒 Payments are processed securely. Your card details are never stored on SD Directory servers.
+                        🔒 Payments are processed securely. Your card details are never stored on the San Diego Directory servers.
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">

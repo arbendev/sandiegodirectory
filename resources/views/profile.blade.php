@@ -142,7 +142,6 @@
             <div class="section-card mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="fw-bold mb-0">Photos</h6>
-                    <a href="#" class="small text-decoration-none">View all</a>
                 </div>
 
                 <div class="photo-scroll">
@@ -202,9 +201,6 @@
                     </div>
                 @endforeach
 
-                <button class="btn btn-outline-primary btn-sm">
-                    Load more reviews
-                </button>
             </div>
         </div>
 
@@ -252,29 +248,24 @@
 
                 <div class="d-flex flex-wrap gap-2 mt-3">
                     <a href="#" class="btn btn-primary btn-sm w-100">Message Business</a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm w-100">Claim this listing</a>
                 </div>
             </div>
 
             {{-- Opening Hours --}}
             @php
                 $hours = $business->opening_hours ?? [
-                    'Monday'    => '9:00 AM – 6:00 PM',
-                    'Tuesday'   => '9:00 AM – 6:00 PM',
-                    'Wednesday' => '9:00 AM – 6:00 PM',
-                    'Thursday'  => '9:00 AM – 8:00 PM',
-                    'Friday'    => '9:00 AM – 8:00 PM',
-                    'Saturday'  => '10:00 AM – 4:00 PM',
+                    'Monday'    => '9:00 AM - 6:00 PM',
+                    'Tuesday'   => '9:00 AM - 6:00 PM',
+                    'Wednesday' => '9:00 AM - 6:00 PM',
+                    'Thursday'  => '9:00 AM - 8:00 PM',
+                    'Friday'    => '9:00 AM - 8:00 PM',
+                    'Saturday'  => '10:00 AM - 4:00 PM',
                     'Sunday'    => 'Closed',
                 ];
             @endphp
 
             <div class="section-card mb-3">
                 <h6 class="fw-bold mb-2">Opening Hours</h6>
-                <div class="small text-muted mb-2">
-                    {{-- You can compute open/closed status in your controller and pass it in --}}
-                    {{ $business->is_open_label ?? 'Open now · Closes at 6:00 PM' }}
-                </div>
                 @foreach($hours as $day => $time)
                     <div class="opening-hours-row small">
                         <span>{{ $day }}</span>

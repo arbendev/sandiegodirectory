@@ -15,30 +15,15 @@
     {{-- CATEGORY HEADER --}}
     <div class="category-header-card mb-4">
         <div class="row g-3 align-items-center">
-            <div class="col-md-7 d-flex align-items-center">
+            <div class="col-md-12 d-flex align-items-center">
                 <div class="category-icon-badge-lg">
                     🍽️
                 </div>
                 <div>
-                    <div class="mb-1">
-                        <span class="badge-soft me-2">Category</span>
-                        <span class="badge-soft">San Diego</span>
-                    </div>
                     <h1 class="h4 fw-bold mb-1">Restaurants</h1>
                     <div class="small text-muted">
                         128 businesses · Updated daily · Discover local favorites, fine dining, and hidden gems across San Diego.
                     </div>
-                </div>
-            </div>
-            <div class="col-md-5 mt-3 mt-md-0">
-                <div class="section-label mb-2">Popular subcategories</div>
-                <div>
-                    <span class="subcat-pill">Cafés</span>
-                    <span class="subcat-pill">Fine Dining</span>
-                    <span class="subcat-pill">Family Style</span>
-                    <span class="subcat-pill">Seafood</span>
-                    <span class="subcat-pill">Tacos &amp; Mexican</span>
-                    <span class="subcat-pill">Brunch</span>
                 </div>
             </div>
         </div>
@@ -106,9 +91,6 @@
                             <a href="#" class="btn btn-primary btn-sm">
                                 View Profile
                             </a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
-                                Get Directions
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -155,9 +137,6 @@
                         <div class="d-grid gap-2">
                             <a href="#" class="btn btn-primary btn-sm">
                                 View Profile
-                            </a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
-                                Reserve a Table
                             </a>
                         </div>
                     </div>
@@ -206,9 +185,6 @@
                             <a href="#" class="btn btn-primary btn-sm">
                                 View Profile
                             </a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
-                                Call
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -255,9 +231,6 @@
                         <div class="d-grid gap-2">
                             <a href="#" class="btn btn-primary btn-sm">
                                 View Profile
-                            </a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
-                                Get Directions
                             </a>
                         </div>
                     </div>

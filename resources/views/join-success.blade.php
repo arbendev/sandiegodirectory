@@ -33,27 +33,6 @@
                         </p>
                     </div>
                 </div>
-                {{-- 
-                <div class="col-md-4 mt-2 mt-md-0 text-md-end">
-                    <div class="hint-text mb-2">
-                        Listing completeness
-                    </div>
-                    <div class="progress-bar-wrapper mb-1">
-                        <div class="progress-bar-inner"></div>
-                    </div>
-                    <div class="small text-muted mb-2">
-                        40% complete · Add photos and details to improve visibility.
-                    </div>
-                    <div class="d-flex justify-content-md-end gap-2">
-                        <a href="#" class="btn btn-primary btn-sm">
-                            Go to Dashboard
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
-                            View My Listing
-                        </a>
-                    </div>
-                </div>
-                --}}
             </div>
         </div>
     </section>
@@ -82,7 +61,7 @@
                     </div>
 
                     <div class="checklist-item">
-                        <div class="checklist-icon todo">1</div>
+                        <div class="checklist-icon todo">2</div>
                         <div>
                             <div class="fw-semibold small">Add photos and logo</div>
                             <div class="small text-muted">
@@ -95,7 +74,7 @@
                     </div>
 
                     <div class="checklist-item">
-                        <div class="checklist-icon todo">2</div>
+                        <div class="checklist-icon todo">3</div>
                         <div>
                             <div class="fw-semibold small">Set hours and contact options</div>
                             <div class="small text-muted">
@@ -109,101 +88,8 @@
 
                 </div>
 
-                {{-- Tips card --}}
-                {{-- 
-                <div class="section-card">
-                    <div class="section-label">Tips to get more views</div>
-                    <div class="mb-2">
-                        <span class="action-pill">Complete your profile</span>
-                        <span class="action-pill">Add 5+ photos</span>
-                        <span class="action-pill">Use a clear tagline</span>
-                        <span class="action-pill">Promote events</span>
-                        <span class="action-pill">Ask for reviews</span>
-                    </div>
-
-                    <ul class="small mb-0">
-                        <li>Businesses with photos receive significantly more views and engagement.</li>
-                        <li>Clear business hours and contact info help customers decide faster.</li>
-                        <li>Encourage happy customers to leave a review and share your SD Directory page.</li>
-                    </ul>
-                </div>
-
-                 --}}
             </div>
            
-
-            {{-- RIGHT: Plan + billing summary --}}
-            {{-- 
-            <div class="col-lg-4">
-
-                <div class="section-card">
-                    <div class="section-label">Plan & billing</div>
-
-                    <div class="card-mini mb-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <div class="fw-semibold small">Featured Listing</div>
-                                <div class="small text-muted">Monthly subscription</div>
-                            </div>
-                            <div class="text-end">
-                                <div class="fw-semibold">$29<span class="small">/mo</span></div>
-                                <div class="small text-muted">Active</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="small mb-1">
-                        Next billing date: <strong>May 12, 2025</strong>
-                    </div>
-                    <div class="small text-muted mb-2">
-                        You can update payment details, view invoices, or cancel your plan from the billing section in your dashboard.
-                    </div>
-
-                    <div class="d-grid gap-2">
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            Manage billing
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
-                            Download receipt
-                        </a>
-                    </div>
-                </div>
-            
-                <div class="section-card">
-                    <div class="section-label">Listing snapshot</div>
-
-                    <div class="small mb-2">
-                        <div class="fw-semibold">Business name</div>
-                        <div>Café Luna</div>
-                    </div>
-
-                    <div class="small mb-2">
-                        <div class="fw-semibold">Category</div>
-                        <div>Restaurants · Coffee &amp; Brunch</div>
-                    </div>
-
-                    <div class="small mb-2">
-                        <div class="fw-semibold">Location</div>
-                        <div>123 Market St, San Diego, CA 92101</div>
-                    </div>
-
-                    <div class="small mb-2">
-                        <div class="fw-semibold">What customers will see</div>
-                        <div class="tag-pill">Logo</div>
-                        <div class="tag-pill">Photos</div>
-                        <div class="tag-pill">Hours</div>
-                        <div class="tag-pill">Phone &amp; Website</div>
-                        <div class="tag-pill">Reviews (when added)</div>
-                    </div>
-
-                    <a href="#" class="btn btn-outline-secondary btn-sm w-100">
-                        Preview my public listing
-                    </a>
-                </div>
-
-
-            </div>
-            --}}
         </div>
     </section>
 

@@ -15,69 +15,17 @@
     <section class="categories-hero">
         <div class="categories-hero-card">
             <div class="row g-3 align-items-center">
-                <div class="col-md-7">
+                <div class="col-md-12">
                     <h1 class="h4 fw-bold mb-1">Browse Categories</h1>
                     <p class="small mb-0 text-muted">
                         Discover local businesses across San Diego by category and subcategory.
                         From restaurants and real estate to health, services, and more.
                     </p>
                 </div>
-                <div class="col-md-5 mt-3 mt-md-0">
-                    <form>
-                        <div class="input-group input-group-sm">
-                            <input type="text"
-                                   class="form-control"
-                                   placeholder="Search categories (e.g. Restaurants, Fitness, Plumbing)">
-                            <button class="btn btn-primary" type="submit">
-                                Search
-                            </button>
-                        </div>
-                        <div class="form-text small mt-1">
-                            Tip: You can also search by subcategory (e.g. &quot;lawyers&quot;, &quot;coffee&quot;).
-                        </div>
-                    </form>
-                </div>
+     
             </div>
         </div>
     </section>
-
-    {{-- ALPHABET FILTER (purely visual for now) --}}
-    <div class="mt-4">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="category-section-heading">
-                All Categories
-            </div>
-            <div class="alphabet-filter d-none d-md-flex flex-wrap gap-1">
-                <button type="button" class="btn btn-sm btn-outline-secondary active">All</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">A</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">B</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">C</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">D</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">E</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">F</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">G</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">H</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">I</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">J</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">K</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">L</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">M</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">N</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">O</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">P</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Q</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">R</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">S</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">T</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">U</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">V</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">W</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">X</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Y</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Z</button>
-            </div>
-        </div>
-    </div>
 
     {{-- CATEGORY GRID (fully static) --}}
     <div class="row g-4 mt-2">
