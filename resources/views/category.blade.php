@@ -86,13 +86,6 @@
                             💵 $$ · Moderate
                         </div>
                     </div>
-                    <div class="col-md-2 text-md-end">
-                        <div class="d-grid gap-2">
-                            <a href="#" class="btn btn-primary btn-sm">
-                                View Profile
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -131,13 +124,6 @@
                         </div>
                         <div class="mb-1">
                             💵 $$$ · Upscale
-                        </div>
-                    </div>
-                    <div class="col-md-2 text-md-end">
-                        <div class="d-grid gap-2">
-                            <a href="#" class="btn btn-primary btn-sm">
-                                View Profile
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -180,13 +166,6 @@
                             💵 $ · Casual
                         </div>
                     </div>
-                    <div class="col-md-2 text-md-end">
-                        <div class="d-grid gap-2">
-                            <a href="#" class="btn btn-primary btn-sm">
-                                View Profile
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -225,13 +204,6 @@
                         </div>
                         <div class="mb-1">
                             💵 $$ · Moderate
-                        </div>
-                    </div>
-                    <div class="col-md-2 text-md-end">
-                        <div class="d-grid gap-2">
-                            <a href="#" class="btn btn-primary btn-sm">
-                                View Profile
-                            </a>
                         </div>
                     </div>
                 </div>

@@ -6,8 +6,8 @@
     <div class="container">
         <h1 class="display-5 fw-bold mb-3">Discover, Connect, and Grow — <br>The Ultimate San Diego Business Hub</h1>
         <div class="mt-4">
-            <a href="#" class="btn btn-primary btn-lg me-2">Find Businesses Near You</a>
-            <a href="#" class="btn btn-warning btn-lg">Add Your Business</a>
+            <a href="#" class="btn btn-primary btn me-2">Find Businesses</a>
+            <a href="#" class="btn btn-warning btn">Add Your Business</a>
         </div>
     </div>
 </section>
@@ -46,17 +46,17 @@
 </div>
 
 <!-- MAP + FEATURED BUSINESSES -->
-<div class="container pb-5">
+<div class="container pb-4">
     <div class="row g-4 align-items-start">
         <!-- MAP -->
-        <div class="col-lg-6">
-            <div class="map-box" style="height: 360px;">
-                <img src="https://via.placeholder.com/700x450?text=Map+Placeholder" alt="Map">
+        <div class="col-lg-5">
+            <div class="map-box" style="height: 300px;">
+                <img src="https://via.placeholder.com/700x400?text=Map+Placeholder" alt="Map">
             </div>
         </div>
 
         <!-- FEATURED BUSINESSES -->
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <h3 class="fw-bold mb-3 text-center text-lg-start">Featured Businesses</h3>
             <div class="d-flex gap-3 overflow-auto pb-2">
 
@@ -70,7 +70,6 @@
                     </div>
                     </a>
                 </div>
-
 
                 <!-- Business 2 -->
                 <div class="card business-card border-0 shadow-sm">
@@ -95,39 +94,79 @@
 </div>
 
 <!-- LOCAL EVENTS -->
-<div class="container pb-5">
+<div class="container pb-2">
     <h3 class="fw-bold mb-4">Local Events</h3>
 
     <div class="row g-4">
         <div class="col-md-3">
             <div class="event-card">
-                <div class="fw-bold text-primary">APR 13</div>
-                <h5 class="mt-2 mb-1">Business Networking</h5>
-                <small>San Diego Convention Center</small>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="event-date-badge">
+                            <div class="month">APR</div>
+                            <div class="day">13</div>
+                            <div class="dow">SAT</div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="mt-2 mb-1">Business Networking</h5>
+                        <small>San Diego Convention Center</small>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="event-card">
-                <div class="fw-bold text-primary">APR 22</div>
-                <h5 class="mt-2 mb-1">Small Business Expo</h5>
-                <small>Downtown San Diego</small>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="event-date-badge">
+                            <div class="month">APR</div>
+                            <div class="day">18</div>
+                            <div class="dow">SAT</div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="mt-2 mb-1">Small Business Expo</h5>
+                        <small>Downtown San Diego</small>
+                    </div>
+                </div>                
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="event-card">
-                <div class="fw-bold text-primary">APR 30</div>
-                <h5 class="mt-2 mb-1">Local Food Festival</h5>
-                <small>La Jolla</small>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="event-date-badge">
+                            <div class="month">APR</div>
+                            <div class="day">24</div>
+                            <div class="dow">SAT</div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="mt-2 mb-1">Local Food Festival</h5>
+                        <small>La Jolla</small>
+                    </div>
+                </div>                
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="event-card">
-                <div class="fw-bold text-primary">APR 30</div>
-                <h5 class="mt-2 mb-1">Local Food Festival</h5>
-                <small>La Jolla</small>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="event-date-badge">
+                            <div class="month">APR</div>
+                            <div class="day">30</div>
+                            <div class="dow">SAT</div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="mt-2 mb-1">Local Food Festival</h5>
+                        <small>La Jolla</small>
+                    </div>
+                </div>  
             </div>
         </div>
     </div>

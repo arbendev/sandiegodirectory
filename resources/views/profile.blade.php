@@ -98,9 +98,9 @@
                             </a>
                         @endif
 
-                        <a href="#location" class="btn btn-outline-light btn-sm">
-                            View Map
-                        </a>
+                                        <div class="d-flex flex-wrap gap-2 mt-3">
+                    <a href="#" class="btn btn-primary btn-sm w-100">Message this Business</a>
+                </div>
                     </div>
                 </div>
             </div>
@@ -245,10 +245,6 @@
                         </a>
                     </div>
                 @endif
-
-                <div class="d-flex flex-wrap gap-2 mt-3">
-                    <a href="#" class="btn btn-primary btn-sm w-100">Message Business</a>
-                </div>
             </div>
 
             {{-- Opening Hours --}}

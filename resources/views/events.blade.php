@@ -21,43 +21,16 @@
                         Business meetups, local festivals, live music, workshops, and more.  
                         Find events by date, category, and neighborhood.
                     </p>
-
-                    {{-- 
-                    <form class="row g-2 align-items-center">
-                        <div class="col-sm-6 col-md-5">
-                            <input type="text" class="form-control form-control-sm"
-                                   placeholder="Search events (e.g. networking, food festival)">
-                        </div>
-                        <div class="col-sm-3 col-md-3">
-                            <input type="date" class="form-control form-control-sm">
-                        </div>
-                        <div class="col-sm-3 col-md-3">
-                            <select class="form-select form-select-sm">
-                                <option selected>All categories</option>
-                                <option>Business & Networking</option>
-                                <option>Food & Drink</option>
-                                <option>Family & Kids</option>
-                                <option>Arts & Culture</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-md-1 mt-1 mt-md-0 text-md-end">
-                            <button class="btn btn-primary btn-sm w-100" type="submit">
-                                Search
-                            </button>
-                        </div>
-                    </form>
-                    --}}
                 </div>
 
             </div>
         </div>
     </section>
 
-    {{-- MAIN LAYOUT: EVENTS LIST + SIDEBAR --}}
     <section>
         <div class="row g-4">
             {{-- LEFT: Event list --}}
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row g-3">
 
                     {{-- Event 1 --}}
@@ -87,19 +60,12 @@
                                         <span class="event-tag-pill">Indoor</span>
                                     </div>
                                 </div>
-                                <div class="col-md-3 small text-muted">
+                                <div class="col-md-2 small text-muted">
                                     <div class="mb-1">
                                         👥 Hosted by: SD Business Hub
                                     </div>
                                     <div class="mb-1">
                                         💵 Tickets: Free · RSVP required
-                                    </div>
-                                </div>
-                                <div class="col-md-2 text-md-end">
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-primary btn-sm">
-                                            View Event
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -141,13 +107,6 @@
                                         💵 Tickets: From $49
                                     </div>
                                 </div>
-                                <div class="col-md-2 text-md-end">
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-primary btn-sm">
-                                            View Event
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -185,13 +144,6 @@
                                     </div>
                                     <div class="mb-1">
                                         💵 Tickets: From $15
-                                    </div>
-                                </div>
-                                <div class="col-md-2 text-md-end">
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-primary btn-sm">
-                                            View Event
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -233,13 +185,6 @@
                                         💵 Tickets: Free with RSVP
                                     </div>
                                 </div>
-                                <div class="col-md-2 text-md-end">
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-primary btn-sm">
-                                            View Event
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -260,35 +205,6 @@
                 </div>
             </div>
 
-            {{-- RIGHT: Sidebar (calendar + highlights) --}}
-            <div class="col-lg-4">
-
-
-
-                {{-- Featured Today / This Week --}}
-                <div class="event-calendar-card mb-3">
-                    <div class="section-label mb-2">Featured This Week</div>
-
-                    <div class="event-mini-card">
-                        <strong>Startup Pitch Night</strong>
-                        <span>Thu · 7:00 PM · Downtown Co-working Loft</span>
-                        <span class="text-muted">Business &amp; Networking</span>
-                    </div>
-
-                    <div class="event-mini-card">
-                        <strong>Family Outdoor Movie Night</strong>
-                        <span>Fri · 8:30 PM · Balboa Park</span>
-                        <span class="text-muted">Family &amp; Kids</span>
-                    </div>
-
-                    <div class="event-mini-card mb-0">
-                        <strong>Art Walk &amp; Wine Tasting</strong>
-                        <span>Sun · 2:00 PM · Little Italy</span>
-                        <span class="text-muted">Arts &amp; Culture</span>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </section>
 
