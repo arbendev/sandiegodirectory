@@ -20,28 +20,32 @@
             <div class="col-6 col-md-2">
                 <a href="/category">
                     <div class="category-card">
-                        🍽️<br><strong>Restaurants</strong>
+                        <img src="/img/icon-dinning.png" class="img-fluid"
+                            style="width:35%;"><br><strong>Restaurants</strong>
                     </div>
                 </a>
             </div>
             <div class="col-6 col-md-2">
                 <div class="category-card">
-                    🏠<br><strong>Real Estate</strong>
+                    <img src="/img/icon-real-estate.png" class="img-fluid" style="width:35%;"><br><strong>Real
+                        Estate</strong>
                 </div>
             </div>
             <div class="col-6 col-md-2">
                 <div class="category-card">
-                    🏋️<br><strong>Health & Fitness</strong>
+                    <img src="/img/icon-fitness.png" class="img-fluid" style="width:35%;"><br><strong>Health &
+                        Fitness</strong>
                 </div>
             </div>
             <div class="col-6 col-md-2">
                 <div class="category-card">
-                    💼<br><strong>Professional Services</strong>
+                    <img src="/img/icon-services.png" class="img-fluid" style="width:35%;"><br><strong>
+                        Services</strong>
                 </div>
             </div>
             <div class="col-6 col-md-2">
                 <div class="category-card">
-                    🛍️<br><strong>Local Shops</strong>
+                    <img src="/img/icon-shopping.png" class="img-fluid" style="width:35%;"><br><strong>Local Shops</strong>
                 </div>
             </div>
         </div>
