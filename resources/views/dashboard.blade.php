@@ -36,10 +36,10 @@
                     </div>
                     --}}
                         <div class="d-flex justify-content-md-end gap-2">
-                            <a href="#" class="btn btn-primary btn-sm">
+                            <a href="/profile/" class="btn btn-primary btn-sm">
                                 View Public Listing
                             </a>
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <a href="/profile-edit/" class="btn btn-outline-secondary btn-sm">
                                 Edit Listing
                             </a>
                         </div>

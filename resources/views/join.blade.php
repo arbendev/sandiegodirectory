@@ -250,7 +250,7 @@
                             Directory servers.
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">
+                        <button href="/join-success/" class="btn btn-primary w-100">
                             Complete Signup &amp; Pay
                         </button>
                     </div>

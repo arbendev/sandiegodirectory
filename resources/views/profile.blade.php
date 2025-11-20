@@ -98,7 +98,7 @@
                             @endif
 
                             <div class="d-flex flex-wrap gap-2 mt-3">
-                                <a href="#" class="btn btn-primary btn-sm w-100">Message this Business</a>
+                                <a href="/dashboard/" class="btn btn-primary btn-sm w-100">Message this Business</a>
                             </div>
                         </div>
                     </div>

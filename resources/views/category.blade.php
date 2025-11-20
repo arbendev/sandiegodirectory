@@ -53,42 +53,44 @@
 
             {{-- Business 1 --}}
             <div class="col-12">
-                <div class="business-list-card">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80"
-                                alt="Café Luna" class="business-thumb">
-                        </div>
-                        <div class="col-md-6">
-                            <h2 class="h6 fw-bold mb-1">
-                                Café Luna
-                            </h2>
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="rating-stars me-2">★★★★★</span>
-                                <span class="small me-2">4.9</span>
-                                <span class="small text-muted">(128 reviews)</span>
+                <a href="/profile/">
+                    <div class="business-list-card">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80"
+                                    alt="Café Luna" class="business-thumb">
                             </div>
-                            <div class="business-meta mb-1">
-                                Coffee &bull; Brunch &bull; Pastries
+                            <div class="col-md-6">
+                                <h2 class="h6 fw-bold mb-1">
+                                    Café Luna
+                                </h2>
+                                <div class="d-flex align-items-center mb-1">
+                                    <span class="rating-stars me-2">★★★★★</span>
+                                    <span class="small me-2">4.9</span>
+                                    <span class="small text-muted">(128 reviews)</span>
+                                </div>
+                                <div class="business-meta mb-1">
+                                    Coffee &bull; Brunch &bull; Pastries
+                                </div>
+                                <div class="small text-muted">
+                                    Cozy neighborhood café known for its artisan coffee, fresh pastries, and sunny outdoor
+                                    patio.
+                                </div>
                             </div>
-                            <div class="small text-muted">
-                                Cozy neighborhood café known for its artisan coffee, fresh pastries, and sunny outdoor
-                                patio.
-                            </div>
-                        </div>
-                        <div class="col-md-3 small text-muted">
-                            <div class="mb-1">
-                                🌍 Gaslamp Quarter, San Diego
-                            </div>
-                            <div class="mb-1">
-                                ⏰ Open now · Closes 7:00 PM
-                            </div>
-                            <div class="mb-1">
-                                💵 $$ · Moderate
+                            <div class="col-md-3 small text-muted">
+                                <div class="mb-1">
+                                    🌍 Gaslamp Quarter, San Diego
+                                </div>
+                                <div class="mb-1">
+                                    ⏰ Open now · Closes 7:00 PM
+                                </div>
+                                <div class="mb-1">
+                                    💵 $$ · Moderate
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             {{-- Business 2 --}}
