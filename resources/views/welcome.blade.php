@@ -57,7 +57,7 @@
             <!-- MAP -->
             <div class="col-lg-5">
                 <div class="map-box" style="height: 300px;">
-                    <img src="https://via.placeholder.com/700x400?text=Map+Placeholder" alt="Map">
+                    <img src="/img/map-temp.jpg" alt="Map" class="img-fluid">
                 </div>
             </div>
 
