@@ -7,7 +7,7 @@
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb small mb-0">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                <li class="breadcrumb-item"><a href="/categories/">Categories</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Restaurants</li>
             </ol>
         </nav>

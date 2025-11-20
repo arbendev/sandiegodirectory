@@ -32,7 +32,7 @@
 
             {{-- Restaurants --}}
             <div class="col-6 col-md-4 col-lg-3">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="/category/" class="text-decoration-none text-dark">
                     <div class="category-grid-card">
                         <div class="d-flex align-items-center mb-2">
                             <div class="category-icon-badge">🍽️</div>

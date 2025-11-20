@@ -6,8 +6,8 @@
         <div class="container">
             <h1 class="display-5 fw-bold mb-3">Discover, Connect, and Grow — <br>The Ultimate San Diego Business Hub</h1>
             <div class="mt-4">
-                <a href="#" class="btn btn-primary btn me-2">Find Businesses</a>
-                <a href="#" class="btn btn-warning btn">Add Your Business</a>
+                <a href="/categories/" class="btn btn-primary btn me-2">Find Businesses</a>
+                <a href="/join/" class="btn btn-warning btn">Add Your Business</a>
             </div>
         </div>
     </section>
@@ -108,21 +108,23 @@
 
         <div class="row g-4">
             <div class="col-md-3">
-                <div class="event-card">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="event-date-badge">
-                                <div class="month">APR</div>
-                                <div class="day">13</div>
-                                <div class="dow">SAT</div>
+                <a href="/event/">
+                    <div class="event-card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="event-date-badge">
+                                    <div class="month">APR</div>
+                                    <div class="day">13</div>
+                                    <div class="dow">SAT</div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <h5 class="mt-2 mb-1">Business Networking</h5>
+                                <small>San Diego Convention Center</small>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <h5 class="mt-2 mb-1">Business Networking</h5>
-                            <small>San Diego Convention Center</small>
-                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="col-md-3">
