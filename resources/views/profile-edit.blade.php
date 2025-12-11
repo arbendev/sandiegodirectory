@@ -14,7 +14,7 @@
 
         {{-- HERO --}}
         <section class="mb-4">
-            <div class="profile-hero-card">
+            <div class="hero-card">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-8">
                         <h1 class="h4 fw-bold mb-1">

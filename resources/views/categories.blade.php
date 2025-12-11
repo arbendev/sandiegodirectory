@@ -13,7 +13,7 @@
 
         {{-- HERO / INTRO --}}
         <section class="categories-hero">
-            <div class="categories-hero-card">
+            <div class="hero-card">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-12">
                         <h1 class="h4 fw-bold mb-1">Browse Categories</h1>
@@ -33,12 +33,12 @@
             {{-- Restaurants --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="/category/" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🍽️</div>
+                            <div class="icon-badge">🍽️</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Restaurants</h2>
-                                <div class="category-meta">128 businesses</div>
+                                <div class="meta-text">128 businesses</div>
                             </div>
                         </div>
 
@@ -47,12 +47,12 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Cafés</span>
-                            <span class="category-sub-pill">Fine Dining</span>
-                            <span class="category-sub-pill">Family Style</span>
-                            <span class="category-sub-pill">Takeout</span>
-                            <span class="category-sub-pill">Brunch</span>
-                            <span class="category-sub-pill">+4 more</span>
+                            <span class="pill">Cafés</span>
+                            <span class="pill">Fine Dining</span>
+                            <span class="pill">Family Style</span>
+                            <span class="pill">Takeout</span>
+                            <span class="pill">Brunch</span>
+                            <span class="pill">+4 more</span>
                         </div>
                     </div>
                 </a>
@@ -61,12 +61,12 @@
             {{-- Coffee & Tea --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">☕</div>
+                            <div class="icon-badge">☕</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Coffee &amp; Tea</h2>
-                                <div class="category-meta">54 businesses</div>
+                                <div class="meta-text">54 businesses</div>
                             </div>
                         </div>
 
@@ -75,10 +75,10 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Coffee Shops</span>
-                            <span class="category-sub-pill">Tea Rooms</span>
-                            <span class="category-sub-pill">Bakeries</span>
-                            <span class="category-sub-pill">Desserts</span>
+                            <span class="pill">Coffee Shops</span>
+                            <span class="pill">Tea Rooms</span>
+                            <span class="pill">Bakeries</span>
+                            <span class="pill">Desserts</span>
                         </div>
                     </div>
                 </a>
@@ -87,12 +87,12 @@
             {{-- Real Estate --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🏠</div>
+                            <div class="icon-badge">🏠</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Real Estate</h2>
-                                <div class="category-meta">89 businesses</div>
+                                <div class="meta-text">89 businesses</div>
                             </div>
                         </div>
 
@@ -101,11 +101,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Agents</span>
-                            <span class="category-sub-pill">Property Management</span>
-                            <span class="category-sub-pill">Mortgage Brokers</span>
-                            <span class="category-sub-pill">Home Inspectors</span>
-                            <span class="category-sub-pill">Title Companies</span>
+                            <span class="pill">Agents</span>
+                            <span class="pill">Property Management</span>
+                            <span class="pill">Mortgage Brokers</span>
+                            <span class="pill">Home Inspectors</span>
+                            <span class="pill">Title Companies</span>
                         </div>
                     </div>
                 </a>
@@ -114,12 +114,12 @@
             {{-- Home Services --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🛠️</div>
+                            <div class="icon-badge">🛠️</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Home Services</h2>
-                                <div class="category-meta">112 businesses</div>
+                                <div class="meta-text">112 businesses</div>
                             </div>
                         </div>
 
@@ -128,11 +128,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Plumbers</span>
-                            <span class="category-sub-pill">Electricians</span>
-                            <span class="category-sub-pill">Roofing</span>
-                            <span class="category-sub-pill">Landscaping</span>
-                            <span class="category-sub-pill">Cleaning Services</span>
+                            <span class="pill">Plumbers</span>
+                            <span class="pill">Electricians</span>
+                            <span class="pill">Roofing</span>
+                            <span class="pill">Landscaping</span>
+                            <span class="pill">Cleaning Services</span>
                         </div>
                     </div>
                 </a>
@@ -141,12 +141,12 @@
             {{-- Health & Fitness --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🏋️</div>
+                            <div class="icon-badge">🏋️</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Health &amp; Fitness</h2>
-                                <div class="category-meta">76 businesses</div>
+                                <div class="meta-text">76 businesses</div>
                             </div>
                         </div>
 
@@ -155,11 +155,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Gyms</span>
-                            <span class="category-sub-pill">Yoga Studios</span>
-                            <span class="category-sub-pill">Pilates</span>
-                            <span class="category-sub-pill">Personal Trainers</span>
-                            <span class="category-sub-pill">CrossFit</span>
+                            <span class="pill">Gyms</span>
+                            <span class="pill">Yoga Studios</span>
+                            <span class="pill">Pilates</span>
+                            <span class="pill">Personal Trainers</span>
+                            <span class="pill">CrossFit</span>
                         </div>
                     </div>
                 </a>
@@ -168,12 +168,12 @@
             {{-- Medical & Wellness --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🩺</div>
+                            <div class="icon-badge">🩺</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Medical &amp; Wellness</h2>
-                                <div class="category-meta">65 businesses</div>
+                                <div class="meta-text">65 businesses</div>
                             </div>
                         </div>
 
@@ -182,11 +182,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Family Doctors</span>
-                            <span class="category-sub-pill">Dentists</span>
-                            <span class="category-sub-pill">Chiropractors</span>
-                            <span class="category-sub-pill">Therapists</span>
-                            <span class="category-sub-pill">Massage</span>
+                            <span class="pill">Family Doctors</span>
+                            <span class="pill">Dentists</span>
+                            <span class="pill">Chiropractors</span>
+                            <span class="pill">Therapists</span>
+                            <span class="pill">Massage</span>
                         </div>
                     </div>
                 </a>
@@ -195,12 +195,12 @@
             {{-- Professional Services --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">💼</div>
+                            <div class="icon-badge">💼</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Professional Services</h2>
-                                <div class="category-meta">94 businesses</div>
+                                <div class="meta-text">94 businesses</div>
                             </div>
                         </div>
 
@@ -209,11 +209,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Lawyers</span>
-                            <span class="category-sub-pill">Accountants</span>
-                            <span class="category-sub-pill">Consultants</span>
-                            <span class="category-sub-pill">Marketing Agencies</span>
-                            <span class="category-sub-pill">IT Services</span>
+                            <span class="pill">Lawyers</span>
+                            <span class="pill">Accountants</span>
+                            <span class="pill">Consultants</span>
+                            <span class="pill">Marketing Agencies</span>
+                            <span class="pill">IT Services</span>
                         </div>
                     </div>
                 </a>
@@ -222,12 +222,12 @@
             {{-- Local Shops --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🛍️</div>
+                            <div class="icon-badge">🛍️</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Local Shops</h2>
-                                <div class="category-meta">72 businesses</div>
+                                <div class="meta-text">72 businesses</div>
                             </div>
                         </div>
 
@@ -236,11 +236,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Boutiques</span>
-                            <span class="category-sub-pill">Gift Shops</span>
-                            <span class="category-sub-pill">Markets</span>
-                            <span class="category-sub-pill">Bookstores</span>
-                            <span class="category-sub-pill">Vintage</span>
+                            <span class="pill">Boutiques</span>
+                            <span class="pill">Gift Shops</span>
+                            <span class="pill">Markets</span>
+                            <span class="pill">Bookstores</span>
+                            <span class="pill">Vintage</span>
                         </div>
                     </div>
                 </a>
@@ -249,12 +249,12 @@
             {{-- Beauty & Personal Care --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">💇‍♀️</div>
+                            <div class="icon-badge">💇‍♀️</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Beauty &amp; Personal Care</h2>
-                                <div class="category-meta">58 businesses</div>
+                                <div class="meta-text">58 businesses</div>
                             </div>
                         </div>
 
@@ -263,11 +263,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Hair Salons</span>
-                            <span class="category-sub-pill">Barbers</span>
-                            <span class="category-sub-pill">Nail Salons</span>
-                            <span class="category-sub-pill">Spas</span>
-                            <span class="category-sub-pill">Makeup Artists</span>
+                            <span class="pill">Hair Salons</span>
+                            <span class="pill">Barbers</span>
+                            <span class="pill">Nail Salons</span>
+                            <span class="pill">Spas</span>
+                            <span class="pill">Makeup Artists</span>
                         </div>
                     </div>
                 </a>
@@ -276,12 +276,12 @@
             {{-- Auto Services --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🚗</div>
+                            <div class="icon-badge">🚗</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Auto Services</h2>
-                                <div class="category-meta">47 businesses</div>
+                                <div class="meta-text">47 businesses</div>
                             </div>
                         </div>
 
@@ -290,11 +290,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Auto Repair</span>
-                            <span class="category-sub-pill">Body Shops</span>
-                            <span class="category-sub-pill">Car Wash</span>
-                            <span class="category-sub-pill">Tire Shops</span>
-                            <span class="category-sub-pill">Detailing</span>
+                            <span class="pill">Auto Repair</span>
+                            <span class="pill">Body Shops</span>
+                            <span class="pill">Car Wash</span>
+                            <span class="pill">Tire Shops</span>
+                            <span class="pill">Detailing</span>
                         </div>
                     </div>
                 </a>
@@ -303,12 +303,12 @@
             {{-- Events & Entertainment --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🎉</div>
+                            <div class="icon-badge">🎉</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Events &amp; Entertainment</h2>
-                                <div class="category-meta">39 businesses</div>
+                                <div class="meta-text">39 businesses</div>
                             </div>
                         </div>
 
@@ -317,11 +317,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Event Planners</span>
-                            <span class="category-sub-pill">Venues</span>
-                            <span class="category-sub-pill">Photographers</span>
-                            <span class="category-sub-pill">DJs</span>
-                            <span class="category-sub-pill">Caterers</span>
+                            <span class="pill">Event Planners</span>
+                            <span class="pill">Venues</span>
+                            <span class="pill">Photographers</span>
+                            <span class="pill">DJs</span>
+                            <span class="pill">Caterers</span>
                         </div>
                     </div>
                 </a>
@@ -330,12 +330,12 @@
             {{-- Education & Learning --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">📚</div>
+                            <div class="icon-badge">📚</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Education &amp; Learning</h2>
-                                <div class="category-meta">33 businesses</div>
+                                <div class="meta-text">33 businesses</div>
                             </div>
                         </div>
 
@@ -344,11 +344,11 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Tutoring</span>
-                            <span class="category-sub-pill">Language Schools</span>
-                            <span class="category-sub-pill">Music Lessons</span>
-                            <span class="category-sub-pill">Test Prep</span>
-                            <span class="category-sub-pill">Childcare</span>
+                            <span class="pill">Tutoring</span>
+                            <span class="pill">Language Schools</span>
+                            <span class="pill">Music Lessons</span>
+                            <span class="pill">Test Prep</span>
+                            <span class="pill">Childcare</span>
                         </div>
                     </div>
                 </a>
@@ -357,12 +357,12 @@
             {{-- Nonprofits & Community --}}
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="#" class="text-decoration-none text-dark">
-                    <div class="category-grid-card">
+                    <div class="hover-card">
                         <div class="d-flex align-items-center mb-2">
-                            <div class="category-icon-badge">🤝</div>
+                            <div class="icon-badge">🤝</div>
                             <div class="flex-grow-1">
                                 <h2 class="h6 fw-bold mb-0">Nonprofits &amp; Community</h2>
-                                <div class="category-meta">21 organizations</div>
+                                <div class="meta-text">21 organizations</div>
                             </div>
                         </div>
 
@@ -371,10 +371,10 @@
                         </p>
 
                         <div class="mb-1">
-                            <span class="category-sub-pill">Charities</span>
-                            <span class="category-sub-pill">Community Centers</span>
-                            <span class="category-sub-pill">Youth Programs</span>
-                            <span class="category-sub-pill">Religious Centers</span>
+                            <span class="pill">Charities</span>
+                            <span class="pill">Community Centers</span>
+                            <span class="pill">Youth Programs</span>
+                            <span class="pill">Religious Centers</span>
                         </div>
                     </div>
                 </a>

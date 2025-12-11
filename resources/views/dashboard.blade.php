@@ -13,7 +13,7 @@
 
         {{-- HERO --}}
         <section class="mb-4">
-            <div class="dash-hero-card">
+            <div class="hero-card">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-8">
                         <h1 class="h4 fw-bold mb-1">
@@ -53,31 +53,31 @@
     <section class="mb-3">
         <div class="row g-3">
             <div class="col-6 col-md-3">
-                <div class="dash-stat-card">
-                    <div class="dash-stat-label">Views (last 30 days)</div>
-                    <div class="dash-stat-value">1,248</div>
-                    <div class="dash-stat-sub">+18% vs previous 30 days</div>
+                <div class="stat-card">
+                    <div class="stat-label">Views (last 30 days)</div>
+                    <div class="stat-value">1,248</div>
+                    <div class="stat-sub">+18% vs previous 30 days</div>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="dash-stat-card">
-                    <div class="dash-stat-label">Website clicks</div>
-                    <div class="dash-stat-value">312</div>
-                    <div class="dash-stat-sub">25% of viewers clicked through</div>
+                <div class="stat-card">
+                    <div class="stat-label">Website clicks</div>
+                    <div class="stat-value">312</div>
+                    <div class="stat-sub">25% of viewers clicked through</div>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="dash-stat-card">
-                    <div class="dash-stat-label">Calls from listing</div>
-                    <div class="dash-stat-value">96</div>
-                    <div class="dash-stat-sub">Avg. 3-4 calls per day</div>
+                <div class="stat-card">
+                    <div class="stat-label">Calls from listing</div>
+                    <div class="stat-value">96</div>
+                    <div class="stat-sub">Avg. 3-4 calls per day</div>
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="dash-stat-card">
-                    <div class="dash-stat-label">Customer reviews</div>
-                    <div class="dash-stat-value">4.8</div>
-                    <div class="dash-stat-sub">38 total reviews · 5 new this month</div>
+                <div class="stat-card">
+                    <div class="stat-label">Customer reviews</div>
+                    <div class="stat-value">4.8</div>
+                    <div class="stat-sub">38 total reviews · 5 new this month</div>
                 </div>
             </div>
         </div>

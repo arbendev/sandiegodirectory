@@ -15,14 +15,15 @@
         </nav>
 
         {{-- HERO CARD --}}
-        <div class="business-hero-card mb-4">
-            <div class="business-hero-cover"
-                style="background-image: url('{{ $business->cover_image_url ?? 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80' }}');">
-            </div>
+        <div class="hero-card mb-4 p-0 position-relative d-flex align-items-end"
+            style="min-height: 320px; background-image: url('{{ $business->cover_image_url ?? 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80' }}'); background-size: cover; background-position: center;">
+            
+            {{-- Dark Overlay --}}
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1)); border-radius: 18px;"></div>
 
-            <div class="px-4 pb-3 pb-md-4 business-hero-content">
+            <div class="p-4 w-100 position-relative text-white">
                 <div class="row align-items-end">
-                    <div class="col-md-8 d-flex align-items-end">
+                    <div class="col-md-8 d-flex align-items-center">
                         <img src="{{ $business->logo_url ?? 'https://via.placeholder.com/120x120?text=Logo' }}"
                             class="business-logo me-3 me-md-4" alt="{{ $business->name ?? 'Business Logo' }}">
 
@@ -131,7 +132,7 @@
                 <div class="section-card mb-3">
                     <h6 class="fw-bold mb-2">Highlights</h6>
                     @foreach ($tags as $tag)
-                        <span class="tag-pill">{{ is_object($tag) ? $tag->name : $tag }}</span>
+                        <span class="pill">{{ is_object($tag) ? $tag->name : $tag }}</span>
                     @endforeach
                 </div>
 
@@ -271,7 +272,7 @@
                 <div class="section-card mb-3">
                     <h6 class="fw-bold mb-2">Opening Hours</h6>
                     @foreach ($hours as $day => $time)
-                        <div class="opening-hours-row small">
+                        <div class="d-flex justify-content-between py-1 small">
                             <span>{{ $day }}</span>
                             <span class="{{ strtolower($time) === 'closed' ? 'text-muted' : '' }}">
                                 {{ $time }}

@@ -112,7 +112,7 @@
                     <div class="event-card">
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="event-date-badge">
+                                <div class="date-badge">
                                     <div class="month">APR</div>
                                     <div class="day">13</div>
                                     <div class="dow">SAT</div>
@@ -131,7 +131,7 @@
                 <div class="event-card">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="event-date-badge">
+                            <div class="date-badge">
                                 <div class="month">APR</div>
                                 <div class="day">18</div>
                                 <div class="dow">SAT</div>
@@ -149,7 +149,7 @@
                 <div class="event-card">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="event-date-badge">
+                            <div class="date-badge">
                                 <div class="month">APR</div>
                                 <div class="day">24</div>
                                 <div class="dow">SAT</div>
@@ -167,7 +167,7 @@
                 <div class="event-card">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="event-date-badge">
+                            <div class="date-badge">
                                 <div class="month">APR</div>
                                 <div class="day">30</div>
                                 <div class="dow">SAT</div>

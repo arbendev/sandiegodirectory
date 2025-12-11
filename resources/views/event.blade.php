@@ -13,25 +13,25 @@
         </nav>
 
         {{-- HERO --}}
-        <div class="event-hero-card mb-4">
+        <div class="hero-card mb-4 p-0">
             <div class="event-hero-cover"></div>
 
-            <div class="event-hero-content">
+            <div class="hero-content-overlap p-4">
                 <div class="row g-3 align-items-end">
                     <div class="col-md-8 d-flex">
-                        <div class="event-date-badge-lg me-3">
+                        <div class="date-badge-lg me-3">
                             <div class="month">APR</div>
                             <div class="day">13</div>
                             <div class="dow">SAT</div>
                         </div>
                         <div class="event-hero-text">
                             <div class="mb-1">
-                                <span class="event-label-pill">Business &amp; Networking</span>
+                                <span class="pill">Business &amp; Networking</span>
                             </div>
                             <h1 class="h4 fw-bold mb-1">
                                 San Diego Business Networking Mixer
                             </h1>
-                            <div class="event-hero-meta">
+                            <div class="meta-text text-white-50">
                                 📍 San Diego Convention Center · Hall B<br>
                                 ⏰ Saturday, April 13 · 6:00 PM - 9:00 PM
                             </div>
@@ -43,7 +43,7 @@
                                 Get Ticket
                             </a>
                         </div>
-                        <div class="event-hero-meta mt-1 small">
+                        <div class="meta-text mt-1 small text-white-50">
                             👤 Hosted by SD Business Hub
                         </div>
                     </div>
@@ -121,9 +121,9 @@
                 </div>
 
                 <div class="mb-2">
-                    <span class="ticket-badge">Free entry</span>
-                    <span class="ticket-badge">Limited capacity</span>
-                    <span class="ticket-badge">RSVP required</span>
+                    <span class="badge-soft">Free entry</span>
+                    <span class="badge-soft">Limited capacity</span>
+                    <span class="badge-soft">RSVP required</span>
                 </div>
 
                 <div class="small mb-2 text-muted">

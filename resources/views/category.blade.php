@@ -13,10 +13,10 @@
         </nav>
 
         {{-- CATEGORY HEADER --}}
-        <div class="category-header-card mb-4">
+        <div class="hero-card mb-4">
             <div class="row g-3 align-items-center">
                 <div class="col-md-12 d-flex align-items-center">
-                    <div class="category-icon-badge-lg">
+                    <div class="icon-badge-lg">
                         🍽️
                     </div>
                     <div>
@@ -54,7 +54,7 @@
             {{-- Business 1 --}}
             <div class="col-12">
                 <a href="/profile/">
-                    <div class="business-list-card">
+                    <div class="hover-card">
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">
                                 <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80"
@@ -69,7 +69,7 @@
                                     <span class="small me-2">4.9</span>
                                     <span class="small text-muted">(128 reviews)</span>
                                 </div>
-                                <div class="business-meta mb-1">
+                                <div class="meta-text mb-1">
                                     Coffee &bull; Brunch &bull; Pastries
                                 </div>
                                 <div class="small text-muted">
@@ -95,7 +95,7 @@
 
             {{-- Business 2 --}}
             <div class="col-12">
-                <div class="business-list-card">
+                <div class="hover-card">
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=600&q=80"
@@ -110,7 +110,7 @@
                                 <span class="small me-2">4.6</span>
                                 <span class="small text-muted">(95 reviews)</span>
                             </div>
-                            <div class="business-meta mb-1">
+                            <div class="meta-text mb-1">
                                 Seafood &bull; Waterfront &bull; Fine Dining
                             </div>
                             <div class="small text-muted">
@@ -135,7 +135,7 @@
 
             {{-- Business 3 --}}
             <div class="col-12">
-                <div class="business-list-card">
+                <div class="hover-card">
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80"
@@ -150,7 +150,7 @@
                                 <span class="small me-2">4.8</span>
                                 <span class="small text-muted">(210 reviews)</span>
                             </div>
-                            <div class="business-meta mb-1">
+                            <div class="meta-text mb-1">
                                 Mexican &bull; Street Food &bull; Casual
                             </div>
                             <div class="small text-muted">
@@ -174,7 +174,7 @@
 
             {{-- Business 4 --}}
             <div class="col-12">
-                <div class="business-list-card">
+                <div class="hover-card">
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80"
@@ -189,7 +189,7 @@
                                 <span class="small me-2">4.5</span>
                                 <span class="small text-muted">(64 reviews)</span>
                             </div>
-                            <div class="business-meta mb-1">
+                            <div class="meta-text mb-1">
                                 Brunch &bull; Coffee &bull; Family Friendly
                             </div>
                             <div class="small text-muted">

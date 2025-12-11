@@ -13,7 +13,7 @@
 
         {{-- HERO / INTRO --}}
         <section class="mb-4">
-            <div class="events-hero">
+            <div class="hero-card">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-7">
                         <h1 class="h4 fw-bold mb-2">Discover What's Happening Around San Diego</h1>
@@ -35,10 +35,10 @@
 
                         {{-- Event 1 --}}
                         <div class="col-12">
-                            <div class="event-card-main">
+                            <div class="hover-card">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <div class="event-date-badge">
+                                        <div class="date-badge">
                                             <div class="month">APR</div>
                                             <div class="day">13</div>
                                             <div class="dow">SAT</div>
@@ -48,7 +48,7 @@
                                         <h2 class="h6 fw-bold mb-1">
                                             San Diego Business Networking Mixer
                                         </h2>
-                                        <div class="event-meta mb-1">
+                                        <div class="meta-text mb-1">
                                             San Diego Convention Center · 6:00 PM - 9:00 PM
                                         </div>
                                         <p class="small text-muted mb-1">
@@ -56,9 +56,9 @@
                                             light bites.
                                         </p>
                                         <div>
-                                            <span class="event-tag-pill">Business &amp; Networking</span>
-                                            <span class="event-tag-pill">Free Registration</span>
-                                            <span class="event-tag-pill">Indoor</span>
+                                            <span class="pill">Business &amp; Networking</span>
+                                            <span class="pill">Free Registration</span>
+                                            <span class="pill">Indoor</span>
                                         </div>
                                     </div>
                                     <div class="col-md-2 small text-muted">
@@ -75,10 +75,10 @@
 
                         {{-- Event 2 --}}
                         <div class="col-12">
-                            <div class="event-card-main">
+                            <div class="hover-card">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <div class="event-date-badge">
+                                        <div class="date-badge">
                                             <div class="month">APR</div>
                                             <div class="day">22</div>
                                             <div class="dow">MON</div>
@@ -88,7 +88,7 @@
                                         <h2 class="h6 fw-bold mb-1">
                                             Small Business Growth Summit
                                         </h2>
-                                        <div class="event-meta mb-1">
+                                        <div class="meta-text mb-1">
                                             Downtown Conference Center · 9:00 AM - 4:00 PM
                                         </div>
                                         <p class="small text-muted mb-1">
@@ -96,9 +96,9 @@
                                             owners.
                                         </p>
                                         <div>
-                                            <span class="event-tag-pill">Business &amp; Networking</span>
-                                            <span class="event-tag-pill">Workshops</span>
-                                            <span class="event-tag-pill">Paid Event</span>
+                                            <span class="pill">Business &amp; Networking</span>
+                                            <span class="pill">Workshops</span>
+                                            <span class="pill">Paid Event</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 small text-muted">
@@ -115,10 +115,10 @@
 
                         {{-- Event 3 --}}
                         <div class="col-12">
-                            <div class="event-card-main">
+                            <div class="hover-card">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <div class="event-date-badge">
+                                        <div class="date-badge">
                                             <div class="month">APR</div>
                                             <div class="day">27</div>
                                             <div class="dow">SAT</div>
@@ -128,7 +128,7 @@
                                         <h2 class="h6 fw-bold mb-1">
                                             San Diego Local Food Festival
                                         </h2>
-                                        <div class="event-meta mb-1">
+                                        <div class="meta-text mb-1">
                                             Liberty Station · 11:00 AM - 7:00 PM
                                         </div>
                                         <p class="small text-muted mb-1">
@@ -136,9 +136,9 @@
                                             all day.
                                         </p>
                                         <div>
-                                            <span class="event-tag-pill">Food &amp; Drink</span>
-                                            <span class="event-tag-pill">Family Friendly</span>
-                                            <span class="event-tag-pill">Outdoor</span>
+                                            <span class="pill">Food &amp; Drink</span>
+                                            <span class="pill">Family Friendly</span>
+                                            <span class="pill">Outdoor</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 small text-muted">
@@ -155,10 +155,10 @@
 
                         {{-- Event 4 --}}
                         <div class="col-12">
-                            <div class="event-card-main">
+                            <div class="hover-card">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <div class="event-date-badge">
+                                        <div class="date-badge">
                                             <div class="month">MAY</div>
                                             <div class="day">03</div>
                                             <div class="dow">FRI</div>
@@ -168,16 +168,16 @@
                                         <h2 class="h6 fw-bold mb-1">
                                             Sunset Rooftop Happy Hour
                                         </h2>
-                                        <div class="event-meta mb-1">
+                                        <div class="meta-text mb-1">
                                             Downtown Rooftop Lounge · 5:30 PM - 8:30 PM
                                         </div>
                                         <p class="small text-muted mb-1">
                                             Relax after work with panoramic views, live DJ, and specialty cocktails.
                                         </p>
                                         <div>
-                                            <span class="event-tag-pill">Social</span>
-                                            <span class="event-tag-pill">Networking</span>
-                                            <span class="event-tag-pill">21+</span>
+                                            <span class="pill">Social</span>
+                                            <span class="pill">Networking</span>
+                                            <span class="pill">21+</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 small text-muted">

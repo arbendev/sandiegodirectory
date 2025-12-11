@@ -14,11 +14,11 @@
 
         {{-- HERO / INTRO --}}
         <section class="mb-4">
-            <div class="join-hero-card">
+            <div class="hero-card">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-7">
                         <div class="mb-1">
-                            <span class="join-badge">📣 Grow your local presence</span>
+                            <span class="badge-soft">📣 Grow your local presence</span>
                         </div>
                         <h1 class="h4 fw-bold mb-2">Join the San Diego Directory as a Featured Business</h1>
                         <p class="small mb-0 text-muted">
@@ -152,7 +152,7 @@
                         <div class="plan-card featured mb-3">
                             <div class="d-flex justify-content-between align-items-center mb-1">
                                 <div class="fw-semibold">Featured Listing</div>
-                                <span class="plan-tag">Most Popular</span>
+                                <span class="pill active">Most Popular</span>
                             </div>
                             <div class="plan-price mb-1">
                                 $29 <span class="small text-muted">/ month</span>
@@ -217,7 +217,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <div class="payment-label">Card information</div>
+                            <div class="meta-text mb-1">Card information</div>
                             <div class="payment-box">
                                 <!-- Payment gateway card element will go here -->
                                 <span class="hint-text">Card number, expiry, CVC</span>
@@ -226,12 +226,12 @@
 
                         <div class="row g-2 mb-3">
                             <div class="col-6">
-                                <div class="payment-label">Name on card</div>
+                                <div class="meta-text mb-1">Name on card</div>
                                 <input type="text" name="card_name" class="form-control form-control-sm"
                                     placeholder="Full name">
                             </div>
                             <div class="col-6">
-                                <div class="payment-label">ZIP / Postal code</div>
+                                <div class="meta-text mb-1">ZIP / Postal code</div>
                                 <input type="text" name="card_zip" class="form-control form-control-sm"
                                     placeholder="e.g. 92101">
                             </div>

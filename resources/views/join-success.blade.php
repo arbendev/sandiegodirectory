@@ -14,7 +14,7 @@
 
         {{-- HERO / SUCCESS --}}
         <section class="mb-4">
-            <div class="success-hero-card">
+            <div class="hero-card">
                 <div class="row g-3 align-items-center">
                     <div class="col-md-8 d-flex">
                         <div class="success-icon-circle">
@@ -22,7 +22,7 @@
                         </div>
                         <div>
                             <div class="mb-1">
-                                <span class="success-badge">Welcome to the San Diego Directory</span>
+                                <span class="badge-soft">Welcome to the San Diego Directory</span>
                             </div>
                             <h1 class="h4 fw-bold mb-1">
                                 Your business listing has been created!
