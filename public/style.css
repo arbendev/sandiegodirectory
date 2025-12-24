@@ -8,12 +8,38 @@ body {
 /* COMPONENTS                               */
 /* ---------------------------------------- */
 
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 30px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
 /* 1. HERO & SECTIONS */
 .hero-section {
     background: url("/img/san-diego.jpg") center/cover no-repeat;
     color: white;
     padding: 130px 0;
     text-align: center;
+}
+
+.hero-section h1 {
+    /* Keeping the improved typography as it's just better, but removing shadow if needed or keeping transparent */
+    font-weight: 800;
+    margin-bottom: 20px;
 }
 
 /* Replaces: business-hero-card, categories-hero-card, event-hero-card, join-hero-card, dash-hero-card, profile-hero-card, photos-hero-card */
@@ -39,16 +65,27 @@ body {
 /* Replaces: category-card */
 .category-card {
     background: white;
-    border-radius: 14px;
-    padding: 25px;
+    border-radius: 16px;
+    padding: 30px 20px;
     text-align: center;
-    transition: 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.04);
+    height: 100%;
 }
 
 .category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0,0,0,0.0);
+}
+
+.category-card img {
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
 }
 
 /* Replaces: category-grid-card, business-list-card, event-card-main, dash-stat-card */
@@ -134,6 +171,12 @@ body {
     background: #faf2e5;
     color: #6d5b44;
     margin-right: 0.5rem;
+}
+
+/* Utilities */
+.backdrop-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* Success / Checklist */

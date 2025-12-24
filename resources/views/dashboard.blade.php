@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@extends('layouts.app')
+
+@section('content')
     <div class="container py-4">
 
         {{-- Breadcrumb --}}
@@ -10,6 +13,16 @@
                 <li class="breadcrumb-item active" aria-current="page">Business Dashboard</li>
             </ol>
         </nav>
+
+        @if(!$listing)
+            <div class="card text-center p-5 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="fw-bold mb-3">Welcome to San Diego Directory!</h2>
+                    <p class="lead text-muted mb-4">You haven't created a business listing yet.</p>
+                    <a href="{{ route('profile.create') }}" class="btn btn-primary btn-lg">Create Your Listing</a>
+                </div>
+            </div>
+        @else
 
         {{-- HERO --}}
         <section class="mb-4">
@@ -24,17 +37,6 @@
                         </p>
                     </div>
                     <div class="col-md-4 mt-2 mt-md-0 text-md-end">
-                        {{-- 
-                    <div class="hint-text mb-1">
-                        Listing completeness
-                    </div>
-                    <div class="progress-wrapper mb-1">
-                        <div class="progress-inner"></div>
-                    </div>
-                    <div class="small text-muted mb-2">
-                        60% complete · Add photos and details to unlock full visibility.
-                    </div>
-                    --}}
                         <div class="d-flex justify-content-md-end gap-2">
                             <a href="{{ route('profile.show', $listing->id) }}" class="btn btn-primary btn-sm">
                                 View Public Listing
@@ -47,8 +49,6 @@
                 </div>
             </div>
         </section>
-
-        {{-- TOP STATS OMITTED --}}
 
         {{-- MAIN GRID --}}
         <section>
@@ -145,63 +145,12 @@
                         </div>
                     </div>
 
-                    {{-- Recent reviews --}}
-                    {{-- 
-                <div class="section-card">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <div>
-                            <div class="section-label mb-0">Recent reviews</div>
-                            <div class="hint-text">
-                                See what customers are saying about your business.
-                            </div>
-                        </div>
-                        <a href="#" class="small text-decoration-none">View all</a>
-                    </div>
-
-                    <div class="review-card">
-                        <div class="d-flex justify-content-between">
-                            <div class="fw-semibold small">Sarah M.</div>
-                            <div class="review-stars">★★★★★</div>
-                        </div>
-                        <div class="small text-muted mb-1">
-                            2 days ago · Visited for brunch
-                        </div>
-                        <div class="small">
-                            “Amazing coffee and such a cozy atmosphere. The staff were incredibly friendly and welcoming.”
-                        </div>
-                    </div>
-
-                    <div class="review-card">
-                        <div class="d-flex justify-content-between">
-                            <div class="fw-semibold small">James K.</div>
-                            <div class="review-stars">★★★★☆</div>
-                        </div>
-                        <div class="small text-muted mb-1">
-                            1 week ago · Takeout
-                        </div>
-                        <div class="small">
-                            “Food was delicious and ready on time. A bit busy on weekends, but totally worth it.”
-                        </div>
-                    </div>
-
-                    <div class="review-card mb-0">
-                        <div class="d-flex justify-content-between">
-                            <div class="fw-semibold small">Lauren P.</div>
-                            <div class="review-stars">★★★★★</div>
-                        </div>
-                        <div class="small text-muted mb-1">
-                            2 weeks ago · Coffee & snack
-                        </div>
-                        <div class="small">
-                            “My go-to spot for a quiet workspace and great lattes. Highly recommend.”
-                        </div>
-                    </div>
-                </div>
-                --}}
-
                 </div>
             </div>
         </section>
+        @endif
 
+    </div>
+@endsection
     </div>
 @endsection

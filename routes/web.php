@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+Route::get('/search', [App\Http\Controllers\ListingController::class, 'search'])->name('search');
+
+Route::get('/profile-create', [App\Http\Controllers\ListingController::class, 'create'])->name('profile.create');
+Route::post('/profile-create', [App\Http\Controllers\ListingController::class, 'store'])->name('profile.store');
 
 Route::get('/profile-edit', [App\Http\Controllers\ListingController::class, 'edit'])->name('profile.edit');
 Route::post('/profile-edit', [App\Http\Controllers\ListingController::class, 'update'])->name('profile.update');

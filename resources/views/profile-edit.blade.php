@@ -18,7 +18,7 @@
                 <div class="row g-3 align-items-center">
                     <div class="col-md-8">
                         <h1 class="h4 fw-bold mb-1">
-                            {{ $listing->title }} · Profile Settings
+                            {{ $listing->exists ? ($listing->title . ' · Profile Settings') : 'Create Your Business Listing' }}
                         </h1>
                         <p class="small mb-0 text-muted">
                             Keep your information accurate and attractive so customers can easily discover and choose you.
@@ -29,7 +29,7 @@
         </section>
 
         {{-- FORM --}}
-        <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ $listing->exists ? route('profile.update') : route('profile.store') }}" enctype="multipart/form-data">
             @csrf
 
             @if(session('success'))
@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="d-flex gap-2">
                                     <button type="submit" class="btn btn-primary btn-sm">
-                                        Save changes
+                                        {{ $listing->exists ? 'Save changes' : 'Create Listing' }}
                                     </button>
                                 </div>
                             </div>
