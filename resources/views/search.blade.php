@@ -24,7 +24,7 @@
             @foreach($listings as $listing)
             <div class="col-md-6 col-lg-3">
                 <div class="card business-card border-0 shadow-sm h-100">
-                    <a href="{{ route('profile.show', $listing->id) }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('profile.show', $listing->slug) }}" class="text-decoration-none text-dark">
                         <div class="position-relative">
                             @if($listing->cover_image_path)
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($listing->cover_image_path) }}" 
@@ -50,7 +50,7 @@
                                     @endif
                                 </div>
                                 <div class="badge bg-light text-dark border">
-                                    <i class="bi bi-star-fill text-warning"></i> 5.0
+                                    <i class="bi bi-star-fill text-warning"></i> {{ number_format($listing->average_rating, 1) }}
                                 </div>
                             </div>
                             

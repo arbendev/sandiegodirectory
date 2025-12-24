@@ -24,4 +24,14 @@ class Listing extends Model
     {
         return $this->hasMany(ListingImage::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getAverageRatingAttribute()
+    {
+        return $this->reviews()->avg('rating') ?: 0;
+    }
 }

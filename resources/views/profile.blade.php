@@ -52,11 +52,13 @@
 
                             <div class="d-flex flex-wrap align-items-center small">
                                 <span class="rating-stars me-1 text-warning">
-                                    ★★★★★
+                                    @for($i=1; $i<=5; $i++)
+                                        @if($i <= round($business->average_rating)) ★ @else ☆ @endif
+                                    @endfor
                                 </span>
-                                <span>5.0</span>
+                                <span>{{ number_format($business->average_rating, 1) }}</span>
                                 <span class="ms-1 text-white-50">
-                                    (0 reviews)
+                                    ({{ $business->reviews->count() }} reviews)
                                 </span>
                             </div>
                         </div>
@@ -136,15 +138,69 @@
                 </div>
                 @endif
 
-                {{-- Reviews (Placeholder) --}}
+                {{-- Reviews --}}
                 <div class="section-card mb-3">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
                         <h6 class="fw-bold mb-0">Customer Reviews</h6>
-                        <span class="small text-muted">Coming soon</span>
+                        <span class="badge bg-light text-dark border">{{ $business->reviews->count() }} Reviews</span>
                     </div>
-                    <p class="small text-muted mb-3">
-                        No reviews yet.
-                    </p>
+
+                    @foreach($business->reviews as $review)
+                        <div class="mb-3 pb-3 border-bottom">
+                            <div class="d-flex justify-content-between mb-1">
+                                <div class="fw-bold small">{{ $review->user->name ?? 'User' }}</div>
+                                <div class="text-warning small">
+                                    @for($i=1; $i<=5; $i++)
+                                        @if($i <= $review->rating) ★ @else ☆ @endif
+                                    @endfor
+                                </div>
+                            </div>
+                            <div class="small text-muted mb-2">
+                                {{ $review->created_at->diffForHumans() }}
+                            </div>
+                            <p class="small mb-0">{{ $review->comment }}</p>
+                        </div>
+                    @endforeach
+
+                    @if($business->reviews->isEmpty())
+                        <p class="small text-muted mb-3">No reviews yet. Be the first to review!</p>
+                    @endif
+
+                    {{-- Write a Review Form --}}
+                    @auth
+                        @if(!$business->reviews->where('user_id', auth()->id())->first())
+                        <div class="mt-4 p-3 bg-light rounded">
+                            <h6 class="fw-bold x-small mb-2">Write a Review</h6>
+                            <form action="{{ route('reviews.store', $business->id) }}" method="POST">
+                                @csrf
+                                <div class="mb-2">
+                                    <label class="form-label small">Rating</label>
+                                    <div class="rating-input">
+                                        <select name="rating" class="form-select form-select-sm" style="width: 100px;">
+                                            <option value="5">5 Stars</option>
+                                            <option value="4">4 Stars</option>
+                                            <option value="3">3 Stars</option>
+                                            <option value="2">2 Stars</option>
+                                            <option value="1">1 Star</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <textarea name="comment" class="form-control form-control-sm" rows="3" placeholder="Share your experience..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
+                            </form>
+                        </div>
+                        @else
+                        <div class="mt-3 p-2 bg-light rounded text-center small text-muted">
+                            You have already reviewed this business.
+                        </div>
+                        @endif
+                    @else
+                        <div class="mt-3 p-3 bg-light rounded text-center">
+                            <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm">Log in to leave a review</a>
+                        </div>
+                    @endauth
                 </div>
             </div>
 

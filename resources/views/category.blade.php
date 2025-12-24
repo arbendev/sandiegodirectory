@@ -53,7 +53,7 @@
 
             @forelse($listings as $listing)
             <div class="col-12">
-                <a href="{{ route('profile.show', $listing->id) }}" class="text-decoration-none text-dark">
+                <a href="{{ route('profile.show', $listing->slug) }}" class="text-decoration-none text-dark">
                     <div class="hover-card">
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">

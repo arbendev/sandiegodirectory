@@ -18,7 +18,7 @@ class ListingController extends Controller
     {
         $query = $request->input('q');
         
-        $listings = Listing::with('category')
+        $listings = Listing::with(['category', 'reviews'])
             ->where('status', 'active')
             ->where(function ($q) use ($query) {
                 $q->where('title', 'like', "%{$query}%")
@@ -102,14 +102,11 @@ class ListingController extends Controller
         return redirect()->route('home')->with('success', 'Listing created successfully!');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $listing = Listing::with(['category', 'images'])->findOrFail($id);
-        
-        // Parse hours and amenities if they are JSON, though Blade can handle array or object access if casted.
-        // It's better to rely on Eloquent casting or accessors in Model if possible, but for now we decode in view or rely on loose blade typing if they are strings.
-        // Let's check model casts first or just pass as is.
-        // Actually, $listing is retrieved. We will adapt the view to use $listing properties.
+        $listing = Listing::with(['category', 'images', 'reviews.user'])
+            ->where('slug', $slug)
+            ->firstOrFail();
         
         return view('profile', [
             'business' => $listing,

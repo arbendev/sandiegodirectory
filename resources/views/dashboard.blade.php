@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-4 mt-2 mt-md-0 text-md-end">
                         <div class="d-flex justify-content-md-end gap-2">
-                            <a href="{{ route('profile.show', $listing->id) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('profile.show', $listing->slug) }}" class="btn btn-primary btn-sm">
                                 View Public Listing
                             </a>
                             <a href="{{ route('profile.edit') }}" class="btn btn-outline-secondary btn-sm">

@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/join-success';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -59,22 +59,26 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            // User fields
+        $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ];
 
-            // Listing fields
-            'business_name' => ['required', 'string', 'max:255'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'address' => ['required', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'zip' => ['required', 'string', 'max:20'],
-            'website' => ['nullable', 'url', 'max:255'],
-            'phone' => ['required', 'string', 'max:50'],
-            'description' => ['required', 'string'],
-        ]);
+        if (isset($data['role']) && $data['role'] === 'business_owner') {
+            $rules = array_merge($rules, [
+                'business_name' => ['required', 'string', 'max:255'],
+                'category_id' => ['required', 'exists:categories,id'],
+                'address' => ['required', 'string', 'max:255'],
+                'city' => ['required', 'string', 'max:255'],
+                'zip' => ['required', 'string', 'max:20'],
+                'website' => ['nullable', 'url', 'max:255'],
+                'phone' => ['required', 'string', 'max:50'],
+                'description' => ['required', 'string'],
+            ]);
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -85,28 +89,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role = $data['role'] ?? 'user';
+        
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => 'business_owner',
+            'role' => $role,
         ]);
 
-        $user->listings()->create([
-            'title' => $data['business_name'],
-            'slug' => \Illuminate\Support\Str::slug($data['business_name'] . '-' . uniqid()),
-            'category_id' => $data['category_id'],
-            'address' => $data['address'],
-            'city' => $data['city'],
-            'state' => 'CA', // Defaulting for SD Directory
-            'zip' => $data['zip'],
-            'website' => $data['website'] ?? null,
-            'phone' => $data['phone'],
-            'description' => $data['description'],
-            // Check 'plan' field from request to set is_featured
-            'is_featured' => isset($data['plan']) && $data['plan'] === 'featured',
-            'status' => 'pending', // Pending approval
-        ]);
+        if ($role === 'business_owner') {
+            $user->listings()->create([
+                'title' => $data['business_name'],
+                'slug' => \Illuminate\Support\Str::slug($data['business_name'] . '-' . uniqid()),
+                'category_id' => $data['category_id'],
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'state' => 'CA', // Defaulting for SD Directory
+                'zip' => $data['zip'],
+                'website' => $data['website'] ?? null,
+                'phone' => $data['phone'],
+                'description' => $data['description'],
+                // Check 'plan' field from request to set is_featured
+                'is_featured' => isset($data['plan']) && $data['plan'] === 'featured',
+                'status' => 'pending', // Pending approval
+            ]);
+        }
 
         return $user;
     }

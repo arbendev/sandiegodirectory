@@ -82,7 +82,7 @@
                 <div class="d-flex gap-3 overflow-auto pb-2">
                     @forelse($featuredListings as $listing)
                     <div class="card business-card border-0 shadow-sm" style="min-width: 210px;">
-                        <a href="{{ route('profile.show', $listing->id) }}" class="text-decoration-none text-dark">
+                        <a href="{{ route('profile.show', $listing->slug) }}" class="text-decoration-none text-dark">
                             @if($listing->cover_image_path)
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($listing->cover_image_path) }}"
                                 class="card-img-top" alt="{{ $listing->title }}" style="height: 130px; object-fit: cover;">
@@ -93,7 +93,12 @@
                             
                             <div class="card-body">
                                 <h6 class="card-title mb-1 text-truncate">{{ $listing->title }}</h6>
-                                <div class="small text-warning">★★★★★</div>
+                                <div class="small text-warning">
+                                    @for($i=1; $i<=5; $i++)
+                                        @if($i <= round($listing->average_rating)) ★ @else ☆ @endif
+                                    @endfor
+                                    <span class="text-muted ms-1">({{ number_format($listing->average_rating, 1) }})</span>
+                                </div>
                             </div>
                         </a>
                     </div>

@@ -51,7 +51,7 @@
                         </div>
                         <div class="meta-text mt-1 small text-white-50">
                             @if($event->listing)
-                                👤 Hosted by <a href="{{ route('profile.show', $event->listing->id) }}" class="text-white text-decoration-underline">{{ $event->listing->title }}</a>
+                                👤 Hosted by <a href="{{ route('profile.show', $event->listing->slug) }}" class="text-white text-decoration-underline">{{ $event->listing->title }}</a>
                             @endif
                         </div>
                     </div>
