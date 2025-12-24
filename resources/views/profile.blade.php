@@ -305,8 +305,7 @@
                         @php
                             $dayData = $hours[$day] ?? null;
                             $isOpen = isset($dayData['is_open']);
-                            $timeStr = $isOpen ? ($dayData['open'] . ' - ' . $dayData['close']) : 'Closed';
-                            // Format time if needed, e.g. 09:00 to 9:00 AM. For simplicity just showing raw or simple format.
+                            $timeStr = $isOpen ? (date('g:i A', strtotime($dayData['open'])) . ' - ' . date('g:i A', strtotime($dayData['close']))) : 'Closed';
                         @endphp
                         <div class="d-flex justify-content-between py-1 small">
                             <span>{{ $day }}</span>

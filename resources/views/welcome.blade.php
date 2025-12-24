@@ -54,16 +54,15 @@
                         @endphp
 
                         @if($staticIcon)
-                            <img src="{{ $staticIcon }}" class="img-fluid mb-2" style="width:35%;" alt="{{ $category->name }}">
+                            <img src="{{ $staticIcon }}" class="img-fluid mb-2 d-block mx-auto" style="width:35%;" alt="{{ $category->name }}">
                         @elseif($category->icon && (str_starts_with($category->icon, 'http') || str_starts_with($category->icon, '/')))
-                            <img src="{{ $category->icon }}" class="img-fluid mb-2" style="width:35%;" alt="{{ $category->name }}">
+                            <img src="{{ $category->icon }}" class="img-fluid mb-2 d-block mx-auto" style="width:35%;" alt="{{ $category->name }}">
                         @elseif($category->icon)
                              {{-- Assume emoji or font class --}}
                              <div class="display-4 mb-2">{{ $category->icon }}</div>
                         @else
-                            <img src="/img/icon-services.png" class="img-fluid mb-2" style="width:35%;" alt="Category">
+                            <img src="/img/icon-services.png" class="img-fluid mb-2 d-block mx-auto" style="width:35%;" alt="Category">
                         @endif
-                        <br>
                         <strong>{{ $category->name }}</strong>
                         <div class="small text-muted mt-1">{{ $category->listings_count }} Listings</div>
                     </div>
