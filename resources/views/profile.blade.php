@@ -14,7 +14,7 @@
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb small mb-0">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Businesses</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Categories</a></li>
                 @if($business->category)
                     <li class="breadcrumb-item">
                         <a href="{{ route('categories.show', $business->category->slug) }}">{{ $business->category->name }}</a>
