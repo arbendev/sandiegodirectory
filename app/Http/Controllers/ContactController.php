@@ -24,6 +24,9 @@ class ContactController extends Controller
         // Logic to send email would go here.
         // Mail::to('admin@example.com')->send(new ContactMail($validated));
         
+        // Create database record
+        \App\Models\ContactSubmission::create($validated);
+        
         Log::info('Contact Form Submission:', $validated);
 
         return back()->with('success', 'Thank you for contacting us! We will get back to you shortly.');

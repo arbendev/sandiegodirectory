@@ -139,13 +139,47 @@
                     <div class="row g-2">
                         @foreach ($business->images as $image)
                             <div class="col-4 col-sm-3">
-                                <img src="{{ asset('storage/' . $image->image_path) }}"
-                                    alt="Gallery Photo" class="img-fluid rounded" style="width:100%; height:150px; object-fit:cover;">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#photoModal" 
+                                   data-bs-image="{{ asset('storage/' . $image->image_path) }}"
+                                   data-bs-caption="{{ $business->title }}">
+                                    <img src="{{ asset('storage/' . $image->image_path) }}"
+                                        alt="Gallery Photo" class="img-fluid rounded" style="width:100%; height:150px; object-fit:cover;">
+                                </a>
                             </div>
                         @endforeach
                     </div>
                 </div>
                 @endif
+                
+                <!-- Photo Modal -->
+                <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content bg-transparent border-0">
+                      <div class="modal-body p-0 text-center position-relative">
+                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <img src="" class="img-fluid rounded shadow-lg" id="modalImage" style="max-height: 85vh;">
+                         <div class="mt-2 text-white small" id="modalCaption"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var photoModal = document.getElementById('photoModal');
+                        photoModal.addEventListener('show.bs.modal', function (event) {
+                            var button = event.relatedTarget;
+                            var imageUrl = button.getAttribute('data-bs-image');
+                            var caption = button.getAttribute('data-bs-caption');
+                            
+                            var modalImage = photoModal.querySelector('#modalImage');
+                            var modalCaption = photoModal.querySelector('#modalCaption');
+                            
+                            modalImage.src = imageUrl;
+                            modalCaption.textContent = caption;
+                        });
+                    });
+                </script>
 
                 {{-- Reviews --}}
                 <div class="section-card mb-3">
