@@ -50,12 +50,14 @@
                             Add a clear logo and cover photo so customers instantly recognize your business.
                         </p>
 
-                         <div class="row g-3 align-items-center mb-3">
+                        <div class="row g-3 align-items-center mb-3">
                             <div class="col-auto d-flex align-items-center">
-                                <div class="logo-preview">
-                                    <img src="{{ $listing->logo_path ? asset('storage/' . $listing->logo_path) : 'https://via.placeholder.com/120?text=Logo' }}" alt="Logo" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                                </div>
-                                <div class="ms-3">
+                                @if($listing->logo_path)
+                                    <div class="logo-preview">
+                                        <img src="{{ asset('storage/' . $listing->logo_path) }}" alt="Logo" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                                    </div>
+                                @endif
+                                <div class="{{ $listing->logo_path ? 'ms-3' : '' }}">
                                     <div class="small fw-semibold mb-1">Business Logo</div>
                                     <input type="file" name="logo" class="form-control form-control-sm">
                                 </div>
@@ -65,10 +67,12 @@
                         <div class="row g-3">
                             <div class="col-12">
                                 <div class="small fw-semibold mb-1">Cover Photo</div>
-                                <div class="cover-preview mb-2">
-                                    <img src="{{ $listing->cover_image_path ? asset('storage/' . $listing->cover_image_path) : 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80' }}"
-                                        alt="Cover" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                                </div>
+                                @if($listing->cover_image_path)
+                                    <div class="cover-preview mb-2">
+                                        <img src="{{ asset('storage/' . $listing->cover_image_path) }}"
+                                            alt="Cover" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
+                                    </div>
+                                @endif
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="hint-text">
                                         Recommended: wide image, at least 1600x600 px.

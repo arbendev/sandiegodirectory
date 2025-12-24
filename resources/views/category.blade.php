@@ -65,15 +65,23 @@
                                     {{ $listing->title }}
                                 </h2>
                                 <div class="d-flex align-items-center mb-1">
-                                    <span class="rating-stars me-2 text-warning">★★★★★</span>
-                                    <span class="small me-2">5.0</span>
-                                    <span class="small text-muted">(0 reviews)</span>
+                                    <span class="rating-stars me-2 text-warning">
+                                        @for($i = 0; $i < 5; $i++)
+                                            @if($i < round($listing->reviews_avg_rating))
+                                                ★
+                                            @else
+                                                ☆
+                                            @endif
+                                        @endfor
+                                    </span>
+                                    <span class="small me-2">{{ number_format($listing->reviews_avg_rating, 1) }}</span>
+                                    <span class="small text-muted">({{ $listing->reviews_count }} reviews)</span>
                                 </div>
                                 <div class="meta-text mb-1">
                                     {{ $listing->tagline }}
                                 </div>
                                 <div class="small text-muted text-truncate" style="max-width: 90%;">
-                                    {{ Str::limit($listing->description, 100) }}
+                                    {{ Str::limit(strip_tags($listing->description), 100) }}
                                 </div>
                             </div>
                             <div class="col-md-3 small text-muted">
@@ -87,10 +95,6 @@
                                     @else
                                         ⏰ Hours not set
                                     @endif
-                                </div>
-                                <div class="mb-1">
-                                    {{-- Price level placeholder --}}
-                                    💵 $$ · Moderate
                                 </div>
                             </div>
                         </div>

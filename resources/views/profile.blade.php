@@ -5,6 +5,9 @@
 @section('meta_keywords', $business->title . ', ' . ($business->category->name ?? '') . ', San Diego, ' . $business->city)
 
 @section('content')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <div class="container py-4">
 
         {{-- Breadcrumbs --}}
@@ -115,9 +118,9 @@
                 {{-- About --}}
                 <div class="section-card mb-3">
                     <h5 class="fw-bold mb-2">About</h5>
-                    <p class="mb-0" style="white-space: pre-line;">
-                        {{ $business->description }}
-                    </p>
+                    <div class="mb-0">
+                        {!! $business->description !!}
+                    </div>
                 </div>
 
                 {{-- Highlights / Tags (Placeholder for now as amenities column exists but might be empty) --}}
@@ -319,9 +322,7 @@
                 <div id="location" class="section-card mb-3">
                     <h6 class="fw-bold mb-2">Location</h6>
                     <div class="map-embed-placeholder mb-2">
-                        {{-- Replace this with a real map embed / Leaflet / Google Maps --}}
-                        <img src="https://via.placeholder.com/500x260?text=Map+Location" alt="Map location"
-                            style="width:100%;height:100%;object-fit:cover;">
+                        <div id="profile-map" style="width: 100%; height: 250px; border-radius: 12px;"></div>
                     </div>
                     <a href="https://maps.google.com/?q={{ urlencode(($business->address ?? '') . ', ' . ($business->city ?? '') . ', ' . ($business->state ?? '')) }}"
                         target="_blank" class="btn btn-outline-primary btn-sm w-100">
@@ -332,4 +333,49 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var rawAddress = '{{ ($business->address ?? '') . ', ' . ($business->city ?? '') . ', ' . ($business->state ?? '') }}';
+            var cityFallback = '{{ ($business->city ?? 'San Diego') . ', ' . ($business->state ?? 'CA') }}';
+            
+            // Initial map centered on SD default
+            var map = L.map('profile-map').setView([32.7157, -117.1611], 13);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+
+            function addMarker(lat, lon, popupText) {
+                var marker = L.marker([lat, lon]).addTo(map);
+                map.setView([lat, lon], 14);
+                if(popupText) marker.bindPopup(popupText).openPopup();
+            }
+
+            console.log('Geocoding Profile Address:', rawAddress);
+
+            fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(rawAddress))
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (data && data.length > 0) {
+                        addMarker(data[0].lat, data[0].lon, '<b>{{ $business->title }}</b><br>' + rawAddress);
+                    } else {
+                        console.warn('Address not found. Trying fallback:', cityFallback);
+                        fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(cityFallback))
+                            .then(function(resFallback) { return resFallback.json(); })
+                            .then(function(dataFallback) {
+                                if (dataFallback && dataFallback.length > 0) {
+                                    // Add slight offset like homepage
+                                    var lat = parseFloat(dataFallback[0].lat) + (Math.random() - 0.5) * 0.01;
+                                    var lon = parseFloat(dataFallback[0].lon) + (Math.random() - 0.5) * 0.01;
+                                    addMarker(lat, lon, '<b>{{ $business->title }}</b><br><i>(Approximate Location)</i>');
+                                }
+                            });
+                    }
+                })
+                .catch(function(err) { console.error('Geocoding error:', err); });
+        });
+    </script>
 @endsection

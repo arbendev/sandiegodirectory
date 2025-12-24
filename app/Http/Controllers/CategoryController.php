@@ -16,9 +16,11 @@ class CategoryController extends Controller
     public function show($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $listings = $category->listings()->where('status', 'active')->paginate(12); // Assuming active status logic
-        // Or just all for now since status logic isn't fully enforced
-        // $listings = $category->listings()->paginate(12);
+        $listings = $category->listings()
+            ->withCount('reviews')
+            ->withAvg('reviews', 'rating')
+            ->where('status', 'active')
+            ->paginate(12);
         
         return view('category', compact('category', 'listings'));
     }

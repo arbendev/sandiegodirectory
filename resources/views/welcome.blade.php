@@ -5,6 +5,9 @@
 @section('meta_keywords', 'San Diego, Business Directory, Events, California, Local Guide, Restaurants, Shopping')
 
 @section('content')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <!-- HERO -->
     <section class="hero-section">
         <div class="container">
@@ -76,7 +79,7 @@
             <!-- MAP -->
             <div class="col-lg-5">
                 <div class="map-box" style="height: 300px;">
-                    <img src="/img/map-temp.jpg" alt="Map" class="img-fluid">
+                    <div id="home-map" style="width: 100%; height: 100%; border-radius: 16px;"></div>
                 </div>
             </div>
 
@@ -146,4 +149,64 @@
             @endforelse
         </div>
     </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Map focused on San Diego
+            var map = L.map('home-map').setView([32.7157, -117.1611], 11);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+
+            var listings = @json($featuredListings);
+            console.log('Map Listings:', listings);
+
+            if (listings.length === 0) {
+                console.warn('No listings found for map.');
+            }
+
+            listings.forEach(function(listing, index) {
+                var address = (listing.address || '') + ', ' + (listing.city || 'San Diego') + ', ' + (listing.state || 'CA');
+                console.log('Geocoding:', address);
+                
+                // Simple delay to respect Nominatim rate limits (not robust but helpful for 3 items)
+                setTimeout(function() {
+                    fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address))
+                        .then(function(response) { return response.json(); })
+                        .then(function(data) {
+                            console.log('Geocode result for ' + listing.title + ':', data);
+                            if (data && data.length > 0) {
+                                var lat = data[0].lat;
+                                var lon = data[0].lon;
+                                var marker = L.marker([lat, lon]).addTo(map);
+                                marker.bindPopup('<b>' + listing.title + '</b><br><a href="/profile/' + listing.slug + '">View Profile</a>');
+                            } else {
+                                console.warn('No coordinates found for:', address, 'Trying fallback to City...');
+                                // Fallback to City, State
+                                var cityAddress = (listing.city || 'San Diego') + ', ' + (listing.state || 'CA');
+                                fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(cityAddress))
+                                    .then(function(res) { return res.json(); })
+                                    .then(function(cityData) {
+                                        if (cityData && cityData.length > 0) {
+                                             var lat = cityData[0].lat;
+                                             var lon = cityData[0].lon;
+                                             // Add a slight random offset to prevent exact overlap if multiple fallbacks occur
+                                             lat = parseFloat(lat) + (Math.random() - 0.5) * 0.01;
+                                             lon = parseFloat(lon) + (Math.random() - 0.5) * 0.01;
+                                             
+                                             var marker = L.marker([lat, lon]).addTo(map);
+                                             marker.bindPopup('<b>' + listing.title + '</b><br><a href="/profile/' + listing.slug + '">View Profile</a><br><i>(Approximate Location)</i>');
+                                        }
+                                    });
+                            }
+                        })
+                        .catch(function(err) { console.error('Geocoding error:', err); });
+                }, index * 1000); // 1-second stager
+            });
+        });
+    </script>
 @endsection
