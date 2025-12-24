@@ -7,8 +7,8 @@
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb small mb-0">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="/categories/">Categories</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Restaurants</li>
+                <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Categories</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
             </ol>
         </nav>
 
@@ -17,13 +17,13 @@
             <div class="row g-3 align-items-center">
                 <div class="col-md-12 d-flex align-items-center">
                     <div class="icon-badge-lg">
-                        🍽️
+                        {{ $category->icon ?? '📁' }}
                     </div>
                     <div>
-                        <h1 class="h4 fw-bold mb-1">Restaurants</h1>
+                        <h1 class="h4 fw-bold mb-1">{{ $category->name }}</h1>
                         <div class="small text-muted">
-                            128 businesses · Updated daily · Discover local favorites, fine dining, and hidden gems across
-                            San Diego.
+                            {{ $category->listings()->count() }} businesses · Updated daily · 
+                            {{ $category->description ?? 'Discover local favorites and hidden gems across San Diego.' }}
                         </div>
                     </div>
                 </div>
@@ -35,12 +35,12 @@
             <div class="col-lg-8">
                 <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
                     <div class="section-label">
-                        Restaurants in San Diego
+                        {{ $category->name }} in San Diego
                     </div>
                 </div>
                 <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                     <div class="small text-muted">
-                        Showing 1-10 of 128 restaurants
+                        Showing {{ $listings->firstItem() ?? 0 }}-{{ $listings->lastItem() ?? 0 }} of {{ $listings->total() }} businesses
                     </div>
 
                 </div>
@@ -51,40 +51,45 @@
         {{-- BUSINESS LIST --}}
         <div class="row g-3">
 
-            {{-- Business 1 --}}
+            @forelse($listings as $listing)
             <div class="col-12">
-                <a href="/profile/">
+                <a href="{{ route('profile.show', $listing->id) }}" class="text-decoration-none text-dark">
                     <div class="hover-card">
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">
-                                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80"
-                                    alt="Café Luna" class="business-thumb">
+                                <img src="{{ $listing->logo_path ? asset('storage/' . $listing->logo_path) : 'https://via.placeholder.com/150x150?text=No+Image' }}"
+                                    alt="{{ $listing->title }}" class="business-thumb" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
                             </div>
                             <div class="col-md-6">
                                 <h2 class="h6 fw-bold mb-1">
-                                    Café Luna
+                                    {{ $listing->title }}
                                 </h2>
                                 <div class="d-flex align-items-center mb-1">
-                                    <span class="rating-stars me-2">★★★★★</span>
-                                    <span class="small me-2">4.9</span>
-                                    <span class="small text-muted">(128 reviews)</span>
+                                    <span class="rating-stars me-2 text-warning">★★★★★</span>
+                                    <span class="small me-2">5.0</span>
+                                    <span class="small text-muted">(0 reviews)</span>
                                 </div>
                                 <div class="meta-text mb-1">
-                                    Coffee &bull; Brunch &bull; Pastries
+                                    {{ $listing->tagline }}
                                 </div>
-                                <div class="small text-muted">
-                                    Cozy neighborhood café known for its artisan coffee, fresh pastries, and sunny outdoor
-                                    patio.
+                                <div class="small text-muted text-truncate" style="max-width: 90%;">
+                                    {{ Str::limit($listing->description, 100) }}
                                 </div>
                             </div>
                             <div class="col-md-3 small text-muted">
                                 <div class="mb-1">
-                                    🌍 Gaslamp Quarter, San Diego
+                                    🌍 {{ $listing->city ?? 'San Diego' }}
                                 </div>
                                 <div class="mb-1">
-                                    ⏰ Open now · Closes 7:00 PM
+                                    {{-- Simple Open/Closed text or just hours check --}}
+                                    @if($listing->hours)
+                                        ⏰ See hours
+                                    @else
+                                        ⏰ Hours not set
+                                    @endif
                                 </div>
                                 <div class="mb-1">
+                                    {{-- Price level placeholder --}}
                                     💵 $$ · Moderate
                                 </div>
                             </div>
@@ -92,139 +97,22 @@
                     </div>
                 </a>
             </div>
-
-            {{-- Business 2 --}}
+            @empty
             <div class="col-12">
-                <div class="hover-card">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=600&q=80"
-                                alt="Harborview Grill" class="business-thumb">
-                        </div>
-                        <div class="col-md-6">
-                            <h2 class="h6 fw-bold mb-1">
-                                Harborview Grill
-                            </h2>
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="rating-stars me-2">★★★★☆</span>
-                                <span class="small me-2">4.6</span>
-                                <span class="small text-muted">(95 reviews)</span>
-                            </div>
-                            <div class="meta-text mb-1">
-                                Seafood &bull; Waterfront &bull; Fine Dining
-                            </div>
-                            <div class="small text-muted">
-                                Upscale waterfront dining with fresh seafood, craft cocktails, and sunset views over the
-                                bay.
-                            </div>
-                        </div>
-                        <div class="col-md-3 small text-muted">
-                            <div class="mb-1">
-                                🌍 Embarcadero, San Diego
-                            </div>
-                            <div class="mb-1">
-                                ⏰ Opens 4:00 PM
-                            </div>
-                            <div class="mb-1">
-                                💵 $$$ · Upscale
-                            </div>
-                        </div>
-                    </div>
+                <div class="alert alert-light text-center py-5">
+                    <div class="h3 mb-3">😕</div>
+                    <div class="fw-semibold">No businesses found in this category yet.</div>
+                    <p class="text-muted small">Check back later or explore other categories.</p>
+                    <a href="{{ route('categories.index') }}" class="btn btn-outline-primary btn-sm">Browse All Categories</a>
                 </div>
             </div>
+            @endforelse
 
-            {{-- Business 3 --}}
-            <div class="col-12">
-                <div class="hover-card">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80"
-                                alt="Barrio Tacos" class="business-thumb">
-                        </div>
-                        <div class="col-md-6">
-                            <h2 class="h6 fw-bold mb-1">
-                                Barrio Tacos
-                            </h2>
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="rating-stars me-2">★★★★★</span>
-                                <span class="small me-2">4.8</span>
-                                <span class="small text-muted">(210 reviews)</span>
-                            </div>
-                            <div class="meta-text mb-1">
-                                Mexican &bull; Street Food &bull; Casual
-                            </div>
-                            <div class="small text-muted">
-                                Vibrant taco spot with handmade tortillas, bold flavors, and late-night hours.
-                            </div>
-                        </div>
-                        <div class="col-md-3 small text-muted">
-                            <div class="mb-1">
-                                🌍 Barrio Logan, San Diego
-                            </div>
-                            <div class="mb-1">
-                                ⏰ Open now · Closes 11:00 PM
-                            </div>
-                            <div class="mb-1">
-                                💵 $ · Casual
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Business 4 --}}
-            <div class="col-12">
-                <div class="hover-card">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80"
-                                alt="Sunrise Brunch House" class="business-thumb">
-                        </div>
-                        <div class="col-md-6">
-                            <h2 class="h6 fw-bold mb-1">
-                                Sunrise Brunch House
-                            </h2>
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="rating-stars me-2">★★★★☆</span>
-                                <span class="small me-2">4.5</span>
-                                <span class="small text-muted">(64 reviews)</span>
-                            </div>
-                            <div class="meta-text mb-1">
-                                Brunch &bull; Coffee &bull; Family Friendly
-                            </div>
-                            <div class="small text-muted">
-                                Bright, family-friendly brunch spot with pancakes, omelets, and bottomless coffee.
-                            </div>
-                        </div>
-                        <div class="col-md-3 small text-muted">
-                            <div class="mb-1">
-                                🌍 North Park, San Diego
-                            </div>
-                            <div class="mb-1">
-                                ⏰ Open now · Closes 2:00 PM
-                            </div>
-                            <div class="mb-1">
-                                💵 $$ · Moderate
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- You can duplicate more business cards as needed --}}
         </div>
 
-        {{-- PAGINATION (static visual) --}}
+        {{-- PAGINATION --}}
         <div class="d-flex justify-content-center mt-4">
-            <nav>
-                <ul class="pagination pagination-sm mb-0">
-                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
-                    <li class="page-item active"><span class="page-link">1</span></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-            </nav>
+            {{ $listings->links() }}
         </div>
 
     </div>

@@ -6,49 +6,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile-edit', [App\Http\Controllers\ListingController::class, 'edit'])->name('profile.edit');
+Route::post('/profile-edit', [App\Http\Controllers\ListingController::class, 'update'])->name('profile.update');
 
-Route::get('/profile-edit', function () {
-    return view('profile-edit');
-});
+Route::get('/profile-photos', [App\Http\Controllers\ListingImageController::class, 'index'])->name('profile.photos');
+Route::post('/profile-photos', [App\Http\Controllers\ListingImageController::class, 'store'])->name('profile.photos.store');
+Route::delete('/profile-photos/{id}', [App\Http\Controllers\ListingImageController::class, 'destroy'])->name('profile.photos.delete');
 
-Route::get('/profile-photos', function () {
-    return view('profile-photos');
-});
+Route::get('/profile/{id}', [App\Http\Controllers\ListingController::class, 'show'])->name('profile.show');
 
-Route::get('/category', function () {
-    return view('category');
-});
+Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
+Route::get('/category/{slug}', [App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
 
-Route::get('/categories', function () {
-    return view('categories');
-});
+Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events.index');
+Route::get('/event/{slug}', [App\Http\Controllers\EventController::class, 'show'])->name('events.show');
 
-Route::get('/events', function () {
-    return view('events');
-});
-
-Route::get('/event', function () {
-    return view('event');
-});
-
-Route::get('/join', function () {
-    return view('join');
-});
-
-Route::get('/join-success', function () {
-    return view('join-success');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
 Auth::routes();
 

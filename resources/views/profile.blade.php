@@ -9,14 +9,14 @@
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Businesses</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ $business->name ?? 'Business Name' }}
+                    {{ $business->title }}
                 </li>
             </ol>
         </nav>
 
         {{-- HERO CARD --}}
         <div class="hero-card mb-4 p-0 position-relative d-flex align-items-end"
-            style="min-height: 320px; background-image: url('{{ $business->cover_image_url ?? 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80' }}'); background-size: cover; background-position: center;">
+            style="min-height: 320px; background-image: url('{{ $business->cover_image_path ? asset('storage/' . $business->cover_image_path) : 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80' }}'); background-size: cover; background-position: center;">
             
             {{-- Dark Overlay --}}
             <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1)); border-radius: 18px;"></div>
@@ -24,84 +24,74 @@
             <div class="p-4 w-100 position-relative text-white">
                 <div class="row align-items-end">
                     <div class="col-md-8 d-flex align-items-center">
-                        <img src="{{ $business->logo_url ?? 'https://via.placeholder.com/120x120?text=Logo' }}"
-                            class="business-logo me-3 me-md-4" alt="{{ $business->name ?? 'Business Logo' }}">
+                        <img src="{{ $business->logo_path ? asset('storage/' . $business->logo_path) : 'https://via.placeholder.com/120x120?text=Logo' }}"
+                            class="business-logo me-3 me-md-4" alt="{{ $business->title }}" style="width: 120px; height: 120px; object-fit: cover; border-radius: 12px; border: 2px solid white;">
 
                         <div class="text-white">
                             <div class="mb-1">
-                                @if (!empty($business->category))
-                                    <span class="badge-soft me-2">
-                                        {{ $business->category->name ?? $business->category }}
+                                @if ($business->category)
+                                    <span class="badge bg-white text-dark me-2">
+                                        {{ $business->category->name }}
                                     </span>
                                 @endif
-                                @if (!empty($business->neighborhood))
-                                    <span class="badge-soft">
-                                        {{ $business->neighborhood }}
+                                @if ($business->state)
+                                    <span class="badge bg-white text-dark opacity-75">
+                                        {{ $business->city }}, {{ $business->state }}
                                     </span>
                                 @endif
                             </div>
                             <h1 class="h3 fw-bold mb-1">
-                                {{ $business->name ?? 'Business Name' }}
+                                {{ $business->title }}
                             </h1>
+                            
+                            @if($business->tagline)
+                            <div class="text-white-75 mb-2">
+                                {{ $business->tagline }}
+                            </div>
+                            @endif
 
                             <div class="d-flex flex-wrap align-items-center small">
-                                <div class="me-3 d-flex align-items-center">
-                                    <span class="rating-stars me-1">
-                                        @php
-                                            $rating = $business->rating ?? 4.8;
-                                            $fullStars = floor($rating);
-                                            $halfStar = $rating - $fullStars >= 0.5;
-                                        @endphp
-
-                                        @for ($i = 0; $i < $fullStars; $i++)
-                                            ★
-                                        @endfor
-                                        @if ($halfStar)
-                                            ☆
-                                        @endif
-                                    </span>
-                                    <span>{{ number_format($rating, 1) }} / 5.0</span>
-                                    <span class="ms-1 text-white-50">
-                                        ({{ $business->review_count ?? 24 }} reviews)
-                                    </span>
-                                </div>
-
-                                @if (!empty($business->price_level))
-                                    <span class="me-3">
-                                        {{ str_repeat('$', $business->price_level) }}
-                                    </span>
-                                @endif
-
-                                @if (!empty($business->short_tagline))
-                                    <span class="text-white-75">
-                                        • {{ $business->short_tagline }}
-                                    </span>
-                                @endif
+                                <span class="rating-stars me-1 text-warning">
+                                    ★★★★★
+                                </span>
+                                <span>5.0</span>
+                                <span class="ms-1 text-white-50">
+                                    (0 reviews)
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-4 mt-3 mt-md-0 text-md-end text-white">
                         <div class="mb-2 small text-white-75">
-                            {{ $business->address ?? '123 Main St, San Diego, CA' }}
+                            {{ $business->address ?? 'Address not set' }}
                         </div>
                         <div class="d-flex flex-wrap justify-content-md-end gap-2">
-                            @if (!empty($business->phone))
+                            @if ($business->phone)
                                 <a href="tel:{{ $business->phone }}" class="btn btn-light btn-sm">
                                     Call
                                 </a>
                             @endif
 
-                            @if (!empty($business->website))
+                            @if ($business->website)
                                 <a href="{{ $business->website }}" target="_blank" class="btn btn-primary btn-sm">
                                     Visit Website
                                 </a>
                             @endif
-
-                            <div class="d-flex flex-wrap gap-2 mt-3">
-                                <a href="/dashboard/" class="btn btn-primary btn-sm w-100">Message this Business</a>
-                            </div>
                         </div>
+                         
+                         @php
+                            $socials = json_decode($business->social_links, true) ?? [];
+                         @endphp
+                         <div class="d-flex gap-2 justify-content-md-end mt-2">
+                             @if(!empty($socials['facebook']))
+                                <a href="{{ $socials['facebook'] }}" target="_blank" class="text-white"><i class="bi bi-facebook"></i> Facebook</a>
+                             @endif
+                             @if(!empty($socials['instagram']))
+                                <a href="{{ $socials['instagram'] }}" target="_blank" class="text-white"><i class="bi bi-instagram"></i> Instagram</a>
+                             @endif
+                         </div>
+
                     </div>
                 </div>
             </div>
@@ -114,101 +104,47 @@
                 {{-- About --}}
                 <div class="section-card mb-3">
                     <h5 class="fw-bold mb-2">About</h5>
-                    <p class="mb-0">
-                        {{ $business->description ?? 'This local business is a staple of the San Diego community, offering quality service and a welcoming atmosphere. Add a detailed description here to highlight what makes this business unique, what it specializes in, and why locals love it.' }}
+                    <p class="mb-0" style="white-space: pre-line;">
+                        {{ $business->description }}
                     </p>
                 </div>
 
-                {{-- Highlights / Tags --}}
-                @php
-                    $tags = $business->tags ?? [
-                        'Family-friendly',
-                        'Locally Owned',
-                        'Outdoor Seating',
-                        'Good for Groups',
-                        'Takes Reservations',
-                    ];
-                @endphp
+                {{-- Highlights / Tags (Placeholder for now as amenities column exists but might be empty) --}}
+                {{-- 
                 <div class="section-card mb-3">
                     <h6 class="fw-bold mb-2">Highlights</h6>
-                    @foreach ($tags as $tag)
-                        <span class="pill">{{ is_object($tag) ? $tag->name : $tag }}</span>
-                    @endforeach
+                    <span class="pill">Locally Owned</span>
+                    <span class="pill">Family-friendly</span>
                 </div>
+                --}}
 
                 {{-- Photos --}}
-                @php
-                    $photos = $business->photos ?? [
-                        'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80',
-                        'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80',
-                        'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80',
-                    ];
-                @endphp
-
+                @if($business->images->count() > 0)
                 <div class="section-card mb-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h6 class="fw-bold mb-0">Photos</h6>
                     </div>
 
-                    <div class="photo-scroll">
-                        @foreach ($photos as $photo)
-                            <img src="{{ is_object($photo) ? $photo->url : $photo }}"
-                                alt="{{ $business->name ?? 'Business Photo' }}">
+                    <div class="row g-2">
+                        @foreach ($business->images as $image)
+                            <div class="col-4 col-sm-3">
+                                <img src="{{ asset('storage/' . $image->image_path) }}"
+                                    alt="Gallery Photo" class="img-fluid rounded" style="width:100%; height:150px; object-fit:cover;">
+                            </div>
                         @endforeach
                     </div>
                 </div>
+                @endif
 
-                {{-- Reviews --}}
-                @php
-                    $reviews = $business->reviews ?? [
-                        [
-                            'name' => 'Sarah M.',
-                            'rating' => 5,
-                            'date' => '2 weeks ago',
-                            'text' =>
-                                'Fantastic experience! Friendly staff, great atmosphere, and the service was top-notch.',
-                        ],
-                        [
-                            'name' => 'James K.',
-                            'rating' => 4,
-                            'date' => '1 month ago',
-                            'text' =>
-                                'Really enjoyed my visit here. A few minor delays, but overall very happy and will return.',
-                        ],
-                    ];
-                @endphp
-
+                {{-- Reviews (Placeholder) --}}
                 <div class="section-card mb-3">
                     <div class="d-flex justify-content-between align-items-center mb-1">
                         <h6 class="fw-bold mb-0">Customer Reviews</h6>
-                        <a href="#" class="small text-decoration-none">Write a review</a>
+                        <span class="small text-muted">Coming soon</span>
                     </div>
                     <p class="small text-muted mb-3">
-                        Showing {{ count($reviews) }} of {{ $business->review_count ?? 24 }} reviews
+                        No reviews yet.
                     </p>
-
-                    @foreach ($reviews as $review)
-                        <div class="border-bottom pb-3 mb-3">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <strong>{{ $review['name'] }}</strong>
-                                    <div class="rating-stars small">
-                                        @for ($i = 0; $i < $review['rating']; $i++)
-                                            ★
-                                        @endfor
-                                        @for ($i = $review['rating']; $i < 5; $i++)
-                                            ☆
-                                        @endfor
-                                    </div>
-                                </div>
-                                <span class="small text-muted">{{ $review['date'] }}</span>
-                            </div>
-                            <p class="small mb-0 mt-2">
-                                {{ $review['text'] }}
-                            </p>
-                        </div>
-                    @endforeach
-
                 </div>
             </div>
 
@@ -220,15 +156,11 @@
 
                     <div class="small mb-2">
                         <div class="fw-semibold">Address</div>
-                        <div>{{ $business->address ?? '123 Main St' }}</div>
-                        <div>{{ $business->city ?? 'San Diego' }}, {{ $business->state ?? 'CA' }}
-                            {{ $business->zip ?? '92101' }}</div>
-                        @if (!empty($business->address_note))
-                            <div class="text-muted">{{ $business->address_note }}</div>
-                        @endif
+                        <div>{{ $business->address }}</div>
+                        <div>{{ $business->city }}, {{ $business->state }} {{ $business->zip }}</div>
                     </div>
 
-                    @if (!empty($business->phone))
+                    @if ($business->phone)
                         <div class="small mb-2">
                             <div class="fw-semibold">Phone</div>
                             <a href="tel:{{ $business->phone }}" class="text-decoration-none">
@@ -237,7 +169,7 @@
                         </div>
                     @endif
 
-                    @if (!empty($business->email))
+                    @if ($business->email)
                         <div class="small mb-2">
                             <div class="fw-semibold">Email</div>
                             <a href="mailto:{{ $business->email }}" class="text-decoration-none">
@@ -246,7 +178,7 @@
                         </div>
                     @endif
 
-                    @if (!empty($business->website))
+                    @if ($business->website)
                         <div class="small mb-3">
                             <div class="fw-semibold">Website</div>
                             <a href="{{ $business->website }}" target="_blank" class="text-decoration-none">
@@ -258,28 +190,31 @@
 
                 {{-- Opening Hours --}}
                 @php
-                    $hours = $business->opening_hours ?? [
-                        'Monday' => '9:00 AM - 6:00 PM',
-                        'Tuesday' => '9:00 AM - 6:00 PM',
-                        'Wednesday' => '9:00 AM - 6:00 PM',
-                        'Thursday' => '9:00 AM - 8:00 PM',
-                        'Friday' => '9:00 AM - 8:00 PM',
-                        'Saturday' => '10:00 AM - 4:00 PM',
-                        'Sunday' => 'Closed',
-                    ];
+                    $hours = json_decode($business->hours, true) ?? [];
+                    // Hours format in DB: ['Mon' => ['open' => '09:00', 'close' => '17:00', 'is_open' => 'on'], ...]
+                    // Order of days for display
+                    $days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
                 @endphp
 
+                @if(!empty($hours))
                 <div class="section-card mb-3">
                     <h6 class="fw-bold mb-2">Opening Hours</h6>
-                    @foreach ($hours as $day => $time)
+                    @foreach ($days as $day)
+                        @php
+                            $dayData = $hours[$day] ?? null;
+                            $isOpen = isset($dayData['is_open']);
+                            $timeStr = $isOpen ? ($dayData['open'] . ' - ' . $dayData['close']) : 'Closed';
+                            // Format time if needed, e.g. 09:00 to 9:00 AM. For simplicity just showing raw or simple format.
+                        @endphp
                         <div class="d-flex justify-content-between py-1 small">
                             <span>{{ $day }}</span>
-                            <span class="{{ strtolower($time) === 'closed' ? 'text-muted' : '' }}">
-                                {{ $time }}
+                            <span class="{{ !$isOpen ? 'text-muted' : '' }}">
+                                {{ $timeStr }}
                             </span>
                         </div>
                     @endforeach
                 </div>
+                @endif
 
                 {{-- Location Map --}}
                 <div id="location" class="section-card mb-3">
@@ -289,40 +224,12 @@
                         <img src="https://via.placeholder.com/500x260?text=Map+Location" alt="Map location"
                             style="width:100%;height:100%;object-fit:cover;">
                     </div>
-                    <a href="https://maps.google.com/?q={{ urlencode($business->address ?? 'San Diego, CA') }}"
+                    <a href="https://maps.google.com/?q={{ urlencode(($business->address ?? '') . ', ' . ($business->city ?? '') . ', ' . ($business->state ?? '')) }}"
                         target="_blank" class="btn btn-outline-primary btn-sm w-100">
                         Get Directions
                     </a>
                 </div>
 
-                {{-- Related Businesses --}}
-                @php
-                    $related = $relatedBusinesses ?? [];
-                @endphp
-
-                @if (!empty($related))
-                    <div class="section-card">
-                        <h6 class="fw-bold mb-2">You might also like</h6>
-                        <div class="small">
-                            @foreach ($related as $item)
-                                <a href="{{ route('businesses.show', $item->slug ?? $item->id) }}"
-                                    class="d-block text-decoration-none text-dark mb-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ $item->logo_url ?? 'https://via.placeholder.com/40x40' }}"
-                                            alt="{{ $item->name }}" class="me-2 rounded"
-                                            style="width:40px;height:40px;object-fit:cover;">
-                                        <div>
-                                            <div class="fw-semibold">{{ $item->name }}</div>
-                                            <div class="text-muted small">
-                                                {{ $item->category->name ?? ($item->category ?? 'Local Business') }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
             </div>
         </div>
     </div>

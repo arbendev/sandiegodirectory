@@ -7,44 +7,52 @@
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb small mb-0">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Events</a></li>
-                <li class="breadcrumb-item active" aria-current="page">San Diego Business Networking Mixer</li>
+                <li class="breadcrumb-item"><a href="{{ route('events.index') }}">Events</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $event->title }}</li>
             </ol>
         </nav>
 
         {{-- HERO --}}
         <div class="hero-card mb-4 p-0">
-            <div class="event-hero-cover"></div>
+            <div class="event-hero-cover" style="background-image: url('{{ $event->image_path ? asset('storage/' . $event->image_path) : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80' }}'); background-size: cover; background-position: center; position: absolute; inset: 0; filter: brightness(0.6);"></div>
 
-            <div class="hero-content-overlap p-4">
+            <div class="hero-content-overlap p-4" style="position: relative; z-index: 2;">
                 <div class="row g-3 align-items-end">
                     <div class="col-md-8 d-flex">
                         <div class="date-badge-lg me-3">
-                            <div class="month">APR</div>
-                            <div class="day">13</div>
-                            <div class="dow">SAT</div>
+                            <div class="month">{{ $event->start_datetime->format('M') }}</div>
+                            <div class="day">{{ $event->start_datetime->format('d') }}</div>
+                            <div class="dow">{{ strtoupper($event->start_datetime->format('D')) }}</div>
                         </div>
-                        <div class="event-hero-text">
+                        <div class="event-hero-text text-white">
                             <div class="mb-1">
-                                <span class="pill">Business &amp; Networking</span>
+                                @if($event->tags)
+                                    @foreach(array_slice($event->tags, 0, 3) as $tag)
+                                        <span class="badge bg-white text-dark me-1">{{ $tag }}</span>
+                                    @endforeach
+                                @endif
                             </div>
                             <h1 class="h4 fw-bold mb-1">
-                                San Diego Business Networking Mixer
+                                {{ $event->title }}
                             </h1>
-                            <div class="meta-text text-white-50">
-                                📍 San Diego Convention Center · Hall B<br>
-                                ⏰ Saturday, April 13 · 6:00 PM - 9:00 PM
+                            <div class="meta-text text-white-75">
+                                📍 {{ $event->location_name ?? 'Location varies' }} <br>
+                                ⏰ {{ $event->start_datetime->format('l, F j') }} · {{ $event->start_datetime->format('g:i A') }} - {{ $event->end_datetime ? $event->end_datetime->format('g:i A') : 'Ends late' }}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 text-md-end">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="#" class="btn btn-primary btn-sm">
-                                Get Ticket
-                            </a>
+                            @if($event->ticket_url)
+                                <a href="{{ $event->ticket_url }}" target="_blank" class="btn btn-primary btn-sm">
+                                    Get Ticket
+                                </a>
+                            @endif
                         </div>
                         <div class="meta-text mt-1 small text-white-50">
-                            👤 Hosted by SD Business Hub
+                            @if($event->listing)
+                                👤 Hosted by <a href="{{ route('profile.show', $event->listing->id) }}" class="text-white text-decoration-underline">{{ $event->listing->title }}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -59,28 +67,10 @@
                 {{-- About --}}
                 <div class="section-card">
                     <div class="section-label">About this event</div>
-                    <h2 class="h6 fw-bold mb-2">
-                        Connect with local professionals in a relaxed, friendly setting.
-                    </h2>
-                    <p class="small mb-2">
-                        Join entrepreneurs, founders, freelancers, and small business owners from across San Diego
-                        for an evening of meaningful connections and conversation. Whether you are looking for new
-                        clients, collaborators, or simply want to expand your local network, this mixer is designed
-                        to help you meet the right people.
-                    </p>
-                    <p class="small mb-2">
-                        Expect a welcoming atmosphere, curated introductions, and light refreshments provided by
-                        local vendors. Bring plenty of business cards, your elevator pitch, and an open mind.
-                    </p>
-                    <p class="small mb-0">
-                        <strong>Who should attend?</strong><br>
-                        Small business owners, startup teams, creatives, marketers, real estate professionals,
-                        consultants, and anyone interested in building relationships within the San Diego business
-                        community.
-                    </p>
+                    <div class="small mb-2" style="white-space: pre-line;">
+                        {{ $event->description }}
+                    </div>
                 </div>
-
-
 
             </div>
 
@@ -93,53 +83,60 @@
 
                     <div class="small mb-2">
                         <div class="fw-semibold">Date &amp; Time</div>
-                        <div>Saturday, April 13</div>
-                        <div>6:00 PM - 9:00 PM</div>
+                        <div>{{ $event->start_datetime->format('l, F j, Y') }}</div>
+                        <div>
+                            {{ $event->start_datetime->format('g:i A') }}
+                            @if($event->end_datetime)
+                                - {{ $event->end_datetime->format('g:i A') }}
+                            @endif
+                        </div>
                     </div>
 
                     <div class="small mb-2">
                         <div class="fw-semibold">Location</div>
-                        <div>San Diego Convention Center · Hall B</div>
-                        <div class="text-muted">111 W Harbor Dr, San Diego, CA 92101</div>
+                        <div>{{ $event->location_name }}</div>
+                        @if($event->address)
+                            <div class="text-muted">{{ $event->address }}</div>
+                        @endif
                     </div>
-
+                    
+                    @if($event->listing && ($event->listing->email || $event->listing->phone))
                     <div class="small mb-2">
                         <div class="fw-semibold">Contact</div>
-                        <div>Email: hello@sdbusinesshub.com</div>
-                        <div>Phone: (555) 123-4567</div>
+                        @if($event->listing->email)
+                            <div>Email: <a href="mailto:{{ $event->listing->email }}">{{ $event->listing->email }}</a></div>
+                        @endif
+                        @if($event->listing->phone)
+                            <div>Phone: <a href="tel:{{ $event->listing->phone }}">{{ $event->listing->phone }}</a></div>
+                        @endif
                     </div>
+                    @endif
                 </div>
 
 
-                {{-- Tickets / Registration --}}
-                {{--
-            <div class="section-card">
-                <div class="section-label">Tickets</div>
-                <h2 class="h6 fw-bold mb-1">General Admission</h2>
-                <div class="mb-1 small text-muted">
-                    Free · Includes access to all networking rounds and refreshments.
-                </div>
+                {{-- Tickets / Price --}}
+                 <div class="section-card mt-3">
+                    <div class="section-label">Tickets</div>
+                    <h2 class="h6 fw-bold mb-1">{{ ucfirst($event->price_type) }} Admission</h2>
+                    
+                    @if($event->price_type === 'paid')
+                        <div class="mb-2">
+                            <span class="badge bg-success text-white">Price: ${{ number_format($event->price, 2) }}</span>
+                        </div>
+                    @else
+                         <div class="mb-2">
+                            <span class="badge bg-success text-white">Free entry</span>
+                        </div>
+                    @endif
 
-                <div class="mb-2">
-                    <span class="badge-soft">Free entry</span>
-                    <span class="badge-soft">Limited capacity</span>
-                    <span class="badge-soft">RSVP required</span>
+                    @if($event->ticket_url)
+                        <div class="d-grid gap-2 mt-3">
+                            <a href="{{ $event->ticket_url }}" target="_blank" class="btn btn-primary btn-sm">
+                                Buy Tickets / RSVP
+                            </a>
+                        </div>
+                    @endif
                 </div>
-
-                <div class="small mb-2 text-muted">
-                    ⏳ 30 spots left · Registration closes April 12 at 11:59 PM.
-                </div>
-
-                <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-primary btn-sm">
-                        Reserve My Spot
-                    </a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                        Share Event
-                    </a>
-                </div>
-            </div>
-             --}}
 
             </div>
         </div>

@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/join-success';
 
     /**
      * Create a new controller instance.
@@ -41,6 +41,17 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $categories = \App\Models\Category::all();
+        return view('auth.register', compact('categories'));
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -49,9 +60,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            // User fields
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+            // Listing fields
+            'business_name' => ['required', 'string', 'max:255'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'zip' => ['required', 'string', 'max:20'],
+            'website' => ['nullable', 'url', 'max:255'],
+            'phone' => ['required', 'string', 'max:50'],
+            'description' => ['required', 'string'],
         ]);
     }
 
@@ -63,10 +85,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 'business_owner',
         ]);
+
+        $user->listings()->create([
+            'title' => $data['business_name'],
+            'slug' => \Illuminate\Support\Str::slug($data['business_name'] . '-' . uniqid()),
+            'category_id' => $data['category_id'],
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'state' => 'CA', // Defaulting for SD Directory
+            'zip' => $data['zip'],
+            'website' => $data['website'] ?? null,
+            'phone' => $data['phone'],
+            'description' => $data['description'],
+            // Check 'plan' field from request to set is_featured
+            'is_featured' => isset($data['plan']) && $data['plan'] === 'featured',
+            'status' => 'pending', // Pending approval
+        ]);
+
+        return $user;
     }
 }

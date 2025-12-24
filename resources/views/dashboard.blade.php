@@ -17,7 +17,7 @@
                 <div class="row g-3 align-items-center">
                     <div class="col-md-8">
                         <h1 class="h4 fw-bold mb-1">
-                            Welcome back, Café Luna
+                            Welcome back, {{ $listing->title ?? 'Business Owner' }}
                         </h1>
                         <p class="small mb-0 text-muted">
                             Use the quick actions to keep your profile fresh and engaging.
@@ -36,10 +36,10 @@
                     </div>
                     --}}
                         <div class="d-flex justify-content-md-end gap-2">
-                            <a href="/profile/" class="btn btn-primary btn-sm">
+                            <a href="{{ route('profile.show', $listing->id) }}" class="btn btn-primary btn-sm">
                                 View Public Listing
                             </a>
-                            <a href="/profile-edit/" class="btn btn-outline-secondary btn-sm">
+                            <a href="{{ route('profile.edit') }}" class="btn btn-outline-secondary btn-sm">
                                 Edit Listing
                             </a>
                         </div>
@@ -48,41 +48,7 @@
             </div>
         </section>
 
-        {{-- TOP STATS --}}
-        {{-- 
-    <section class="mb-3">
-        <div class="row g-3">
-            <div class="col-6 col-md-3">
-                <div class="stat-card">
-                    <div class="stat-label">Views (last 30 days)</div>
-                    <div class="stat-value">1,248</div>
-                    <div class="stat-sub">+18% vs previous 30 days</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-card">
-                    <div class="stat-label">Website clicks</div>
-                    <div class="stat-value">312</div>
-                    <div class="stat-sub">25% of viewers clicked through</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-card">
-                    <div class="stat-label">Calls from listing</div>
-                    <div class="stat-value">96</div>
-                    <div class="stat-sub">Avg. 3-4 calls per day</div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-card">
-                    <div class="stat-label">Customer reviews</div>
-                    <div class="stat-value">4.8</div>
-                    <div class="stat-sub">38 total reviews · 5 new this month</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    --}}
+        {{-- TOP STATS OMITTED --}}
 
         {{-- MAIN GRID --}}
         <section>
@@ -109,29 +75,49 @@
                         </div>
 
                         <div class="checklist-item">
-                            <div class="checklist-icon todo">2</div>
-                            <div>
-                                <div class="fw-semibold small">Upload a logo and cover photo</div>
-                                <div class="small text-muted">
-                                    Profiles with a recognizable logo and strong photos receive more clicks.
+                            @if($listing->logo_path && $listing->cover_image_path)
+                                <div class="checklist-icon done">✓</div>
+                                <div>
+                                    <div class="fw-semibold small">Upload a logo and cover photo</div>
+                                    <div class="small text-muted">
+                                        Great job! Your profile looks professional.
+                                    </div>
                                 </div>
-                                <a href="#" class="btn btn-outline-primary btn-sm mt-1">
-                                    Add photos
-                                </a>
-                            </div>
+                            @else
+                                <div class="checklist-icon todo">2</div>
+                                <div>
+                                    <div class="fw-semibold small">Upload a logo and cover photo</div>
+                                    <div class="small text-muted">
+                                        Profiles with a recognizable logo and strong photos receive more clicks.
+                                    </div>
+                                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary btn-sm mt-1">
+                                        Add photos
+                                    </a>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="checklist-item">
-                            <div class="checklist-icon todo">3</div>
-                            <div>
-                                <div class="fw-semibold small">Set business hours</div>
-                                <div class="small text-muted">
-                                    Let customers know when you're open so they can plan their visit.
+                            @if($listing->hours)
+                                <div class="checklist-icon done">✓</div>
+                                <div>
+                                    <div class="fw-semibold small">Set business hours</div>
+                                    <div class="small text-muted">
+                                        Customers now know when to visit you.
+                                    </div>
                                 </div>
-                                <a href="#" class="btn btn-outline-primary btn-sm mt-1">
-                                    Set hours
-                                </a>
-                            </div>
+                            @else
+                                <div class="checklist-icon todo">3</div>
+                                <div>
+                                    <div class="fw-semibold small">Set business hours</div>
+                                    <div class="small text-muted">
+                                        Let customers know when you're open so they can plan their visit.
+                                    </div>
+                                    <a href="{{ route('profile.edit') }}#hours" class="btn btn-outline-primary btn-sm mt-1">
+                                        Set hours
+                                    </a>
+                                </div>
+                            @endif
                         </div>
 
                     </div>
@@ -147,10 +133,10 @@
                             Common tasks you'll do most often.
                         </p>
                         <div class="mb-2">
-                            <a href="#" class="quick-link-pill">
+                            <a href="{{ route('profile.edit') }}" class="quick-link-pill">
                                 ✏️ <span>Edit listing</span>
                             </a>
-                            <a href="#" class="quick-link-pill">
+                            <a href="{{ route('profile.photos') }}" class="quick-link-pill">
                                 🖼️ <span>Manage photos</span>
                             </a>
                             <a href="#" class="quick-link-pill">

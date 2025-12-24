@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $listing = auth()->user()->listings()->first();
+        return view('dashboard', compact('listing'));
     }
 }

@@ -7,7 +7,7 @@
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb small mb-0">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Business Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Business Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
             </ol>
         </nav>
@@ -18,24 +18,25 @@
                 <div class="row g-3 align-items-center">
                     <div class="col-md-8">
                         <h1 class="h4 fw-bold mb-1">
-                            Café Luna · Profile Settings
+                            {{ $listing->title }} · Profile Settings
                         </h1>
                         <p class="small mb-0 text-muted">
                             Keep your information accurate and attractive so customers can easily discover and choose you.
                         </p>
-                    </div>
-                    <div class="col-md-4 mt-2 mt-md-0 text-md-end">
-                        <div class="small text-muted mb-1">
-                            Last updated: Apr 10, 2025 · 3:42 PM
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         {{-- FORM --}}
-        <form method="POST" action="#">
+        <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
             @csrf
+
+            @if(session('success'))
+                <div class="alert alert-success mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
 
             <div class="row g-4">
 
@@ -49,19 +50,14 @@
                             Add a clear logo and cover photo so customers instantly recognize your business.
                         </p>
 
-                        <div class="row g-3 align-items-center mb-3">
+                         <div class="row g-3 align-items-center mb-3">
                             <div class="col-auto d-flex align-items-center">
                                 <div class="logo-preview">
-                                    <img src="https://via.placeholder.com/120?text=Logo" alt="Logo">
+                                    <img src="{{ $listing->logo_path ? asset('storage/' . $listing->logo_path) : 'https://via.placeholder.com/120?text=Logo' }}" alt="Logo" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
                                 </div>
-                                <div>
+                                <div class="ms-3">
                                     <div class="small fw-semibold mb-1">Business Logo</div>
-                                    <div class="hint-text mb-2">
-                                        Recommended: square image, at least 300x300 px, PNG or JPG.
-                                    </div>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                        Upload logo
-                                    </button>
+                                    <input type="file" name="logo" class="form-control form-control-sm">
                                 </div>
                             </div>
                         </div>
@@ -70,17 +66,14 @@
                             <div class="col-12">
                                 <div class="small fw-semibold mb-1">Cover Photo</div>
                                 <div class="cover-preview mb-2">
-                                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80"
-                                        alt="Cover">
+                                    <img src="{{ $listing->cover_image_path ? asset('storage/' . $listing->cover_image_path) : 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80' }}"
+                                        alt="Cover" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="hint-text">
-                                        Recommended: wide image, at least 1600x600 px. This appears at the top of your
-                                        profile.
+                                        Recommended: wide image, at least 1600x600 px.
                                     </div>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                        Change cover
-                                    </button>
+                                    <input type="file" name="cover" class="form-control form-control-sm w-auto">
                                 </div>
                             </div>
                         </div>
@@ -97,46 +90,30 @@
                             <div class="col-md-8">
                                 <label class="form-label small fw-semibold">Business Name</label>
                                 <input type="text" name="business_name" class="form-control form-control-sm"
-                                    value="Café Luna">
+                                    value="{{ old('business_name', $listing->title) }}">
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label small fw-semibold">Primary Category</label>
-                                <select name="category" class="form-select form-select-sm">
-                                    <option>Restaurants</option>
-                                    <option selected>Coffee &amp; Tea</option>
-                                    <option>Health &amp; Fitness</option>
-                                    <option>Local Shops</option>
-                                    <option>Professional Services</option>
+                                <select name="category_id" class="form-select form-select-sm">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" {{ $listing->category_id == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label class="form-label small fw-semibold">Tagline</label>
                                 <input type="text" name="tagline" class="form-control form-control-sm"
                                     placeholder="e.g. Cozy neighborhood café with artisan coffee."
-                                    value="Cozy neighborhood café with artisan coffee and fresh pastries.">
-                                <div class="hint-text mt-1">
-                                    A short, clear sentence that describes what makes your business special.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label small fw-semibold">Secondary Categories</label>
-                                <input type="text" name="subcategories" class="form-control form-control-sm"
-                                    placeholder="e.g. Brunch, Bakery, Wi-Fi">
-                                <div class="hint-text mt-1">
-                                    Comma-separated keywords (not shown directly, used for search).
-                                </div>
+                                    value="{{ old('tagline', $listing->tagline) }}">
                             </div>
 
                             <div class="col-12">
                                 <label class="form-label small fw-semibold">Business Description</label>
                                 <textarea name="description" rows="4" class="form-control form-control-sm"
-                                    placeholder="Describe your business, what you offer, and why customers love you.">Café Luna is a cozy neighborhood spot in the heart of San Diego, known for artisan coffee, fresh-baked pastries, and a relaxed atmosphere perfect for meetups, remote work, or a quiet break.</textarea>
-                                <div class="hint-text mt-1">
-                                    Aim for 3–6 sentences. You can highlight specialties, ambiance, and what customers can
-                                    expect.
-                                </div>
+                                    placeholder="Describe your business...">{{ old('description', $listing->description) }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -149,29 +126,33 @@
                             <div class="col-md-6">
                                 <label class="form-label small fw-semibold">Phone</label>
                                 <input type="text" name="phone" class="form-control form-control-sm"
-                                    value="(555) 123-4567">
+                                    value="{{ old('phone', $listing->phone) }}">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label small fw-semibold">Website</label>
                                 <input type="url" name="website" class="form-control form-control-sm"
-                                    value="https://cafelunaexample.com">
+                                    value="{{ old('website', $listing->website) }}">
                             </div>
+
+                            @php
+                                $socials = json_decode($listing->social_links, true) ?? [];
+                            @endphp
 
                             <div class="col-md-6">
                                 <label class="form-label small fw-semibold">Facebook</label>
                                 <input type="url" name="facebook" class="form-control form-control-sm"
-                                    placeholder="https://facebook.com/yourpage">
+                                    placeholder="https://facebook.com/yourpage" value="{{ old('facebook', $socials['facebook'] ?? '') }}">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label small fw-semibold">Instagram</label>
                                 <input type="url" name="instagram" class="form-control form-control-sm"
-                                    placeholder="https://instagram.com/yourprofile">
+                                    placeholder="https://instagram.com/yourprofile" value="{{ old('instagram', $socials['instagram'] ?? '') }}">
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label small fw-semibold">Email for inquiries</label>
                                 <input type="email" name="contact_email" class="form-control form-control-sm"
-                                    value="hello@cafelunaexample.com">
+                                    value="{{ old('contact_email', $listing->email) }}">
                             </div>
                         </div>
                     </div>
@@ -188,15 +169,15 @@
                         <div class="mb-2">
                             <label class="form-label small fw-semibold mb-1">Address</label>
                             <input type="text" name="address" class="form-control form-control-sm mb-2"
-                                value="123 Market St">
+                                value="{{ old('address', $listing->address) }}">
                             <div class="row g-2">
                                 <div class="col-8">
                                     <input type="text" name="city" class="form-control form-control-sm"
-                                        value="San Diego">
+                                        value="{{ old('city', $listing->city) }}">
                                 </div>
                                 <div class="col-4">
                                     <input type="text" name="zip" class="form-control form-control-sm"
-                                        value="92101">
+                                        value="{{ old('zip', $listing->zip) }}">
                                 </div>
                             </div>
                             <div class="hint-text mt-1">
@@ -214,194 +195,29 @@
 
                         <table class="hours-table">
                             <tbody>
+                                @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
                                 <tr>
-                                    <th class="pe-2">Mon</th>
+                                    <th class="pe-2">{{ $day }}</th>
                                     <td>
                                         <div class="row g-1">
                                             <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="08:00">
+                                                <input type="time" name="hours[{{ $day }}][open]" class="form-control form-control-sm" value="09:00">
                                             </div>
                                             <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="18:00">
+                                                <input type="time" name="hours[{{ $day }}][close]" class="form-control form-control-sm" value="17:00">
                                             </div>
                                             <div class="col-2 text-end">
                                                 <div class="form-check form-check-inline small">
-                                                    <input class="form-check-input" type="checkbox" checked>
+                                                    <input class="form-check-input" type="checkbox" name="hours[{{ $day }}][is_open]" checked>
                                                     <label class="form-check-label">Open</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th class="pe-2">Tue</th>
-                                    <td>
-                                        <div class="row g-1">
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="08:00">
-                                            </div>
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="18:00">
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <div class="form-check form-check-inline small">
-                                                    <input class="form-check-input" type="checkbox" checked>
-                                                    <label class="form-check-label">Open</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="pe-2">Wed</th>
-                                    <td>
-                                        <div class="row g-1">
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="08:00">
-                                            </div>
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="18:00">
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <div class="form-check form-check-inline small">
-                                                    <input class="form-check-input" type="checkbox" checked>
-                                                    <label class="form-check-label">Open</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="pe-2">Thu</th>
-                                    <td>
-                                        <div class="row g-1">
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="08:00">
-                                            </div>
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="18:00">
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <div class="form-check form-check-inline small">
-                                                    <input class="form-check-input" type="checkbox" checked>
-                                                    <label class="form-check-label">Open</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="pe-2">Fri</th>
-                                    <td>
-                                        <div class="row g-1">
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="08:00">
-                                            </div>
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="19:00">
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <div class="form-check form-check-inline small">
-                                                    <input class="form-check-input" type="checkbox" checked>
-                                                    <label class="form-check-label">Open</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="pe-2">Sat</th>
-                                    <td>
-                                        <div class="row g-1">
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="09:00">
-                                            </div>
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm"
-                                                    value="14:00">
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <div class="form-check form-check-inline small">
-                                                    <input class="form-check-input" type="checkbox" checked>
-                                                    <label class="form-check-label">Open</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="pe-2">Sun</th>
-                                    <td>
-                                        <div class="row g-1">
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm">
-                                            </div>
-                                            <div class="col-5">
-                                                <input type="time" class="form-control form-control-sm">
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <div class="form-check form-check-inline small">
-                                                    <input class="form-check-input" type="checkbox">
-                                                    <label class="form-check-label">Open</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                    </div>
-
-                    {{-- Highlights & tags --}}
-                    <div class="section-card">
-                        <div class="section-label">Highlights</div>
-                        <p class="hint-text mb-2">
-                            Select what applies to your business. These may show as icons or tags.
-                        </p>
-
-                        <div class="mb-2">
-                            <div class="form-check small">
-                                <input class="form-check-input" type="checkbox" id="highlight_wifi" checked>
-                                <label class="form-check-label" for="highlight_wifi">
-                                    Free Wi-Fi
-                                </label>
-                            </div>
-                            <div class="form-check small">
-                                <input class="form-check-input" type="checkbox" id="highlight_outdoor" checked>
-                                <label class="form-check-label" for="highlight_outdoor">
-                                    Outdoor seating
-                                </label>
-                            </div>
-                            <div class="form-check small">
-                                <input class="form-check-input" type="checkbox" id="highlight_parking">
-                                <label class="form-check-label" for="highlight_parking">
-                                    On-site parking
-                                </label>
-                            </div>
-                            <div class="form-check small">
-                                <input class="form-check-input" type="checkbox" id="highlight_family">
-                                <label class="form-check-label" for="highlight_family">
-                                    Family friendly
-                                </label>
-                            </div>
-                            <div class="form-check small">
-                                <input class="form-check-input" type="checkbox" id="highlight_vegan">
-                                <label class="form-check-label" for="highlight_vegan">
-                                    Vegan / vegetarian options
-                                </label>
-                            </div>
-                        </div>
                     </div>
 
                     {{-- Save bar --}}
