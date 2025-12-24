@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', $business->title . ' - San Diego Directory')
+@section('meta_description', Str::limit($business->description, 160))
+@section('meta_keywords', $business->title . ', ' . ($business->category->name ?? '') . ', San Diego, ' . $business->city)
+
 @section('content')
     <div class="container py-4">
 
@@ -7,7 +11,12 @@
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb small mb-0">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Businesses</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Businesses</a></li>
+                @if($business->category)
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('categories.show', $business->category->slug) }}">{{ $business->category->name }}</a>
+                    </li>
+                @endif
                 <li class="breadcrumb-item active" aria-current="page">
                     {{ $business->title }}
                 </li>

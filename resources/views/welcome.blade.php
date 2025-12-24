@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'San Diego Directory - Discover Local Businesses & Events')
+@section('meta_description', 'The ultimate guide to San Diego. Find the best restaurants, shops, services, and upcoming events in San Diego, CA.')
+@section('meta_keywords', 'San Diego, Business Directory, Events, California, Local Guide, Restaurants, Shopping')
+
 @section('content')
     <!-- HERO -->
     <section class="hero-section">

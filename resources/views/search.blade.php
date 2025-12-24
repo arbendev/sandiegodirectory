@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'Search Results for ' . $query . ' - San Diego Directory')
+@section('meta_description', 'Search results for ' . $query . ' in San Diego Directory.')
+
 @section('content')
 <div class="container py-5">
     

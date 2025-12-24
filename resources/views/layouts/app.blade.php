@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'San Diego Directory') }}</title>
+    <title>@yield('title', config('app.name', 'San Diego Directory'))</title>
+    <meta name="description" content="@yield('meta_description', 'Discover the best local businesses, events, and services in San Diego. Your ultimate guide to the city by the bay.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'San Diego, Business Directory, Events, Local Services, California, Travel, Tourism')">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
