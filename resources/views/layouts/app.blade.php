@@ -136,9 +136,9 @@
                                     Businesses</a></li>
                             <li class="mb-1"><a href="/events" class="text-decoration-none text-dark">Upcoming
                                     Events</a></li>
-                            <li class="mb-1"><a href="/join" class="text-decoration-none text-dark">Add Your
+                            <li class="mb-1"><a href="/register" class="text-decoration-none text-dark">Add Your
                                     Business</a></li>
-                            <li class="mb-1"><a href="#" class="text-decoration-none text-dark">Contact
+                            <li class="mb-1"><a href="/contact" class="text-decoration-none text-dark">Contact
                                     Us</a></li>
                         </ul>
                     </div>

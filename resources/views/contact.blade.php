@@ -98,21 +98,6 @@
                         <a href="tel:+16195550123" class="small text-decoration-none">(619) 555-0123</a>
                     </div>
                 </div>
-
-                {{-- Map Placeholder --}}
-                <div class="section-card mb-3">
-                    <div class="map-embed-placeholder" style="height: 200px; background-color: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999;">
-                        Map Embed Placeholder
-                    </div>
-                </div>
-                
-                {{-- FAQ CTA --}}
-                <div class="card border-0 bg-light p-3">
-                    <h6 class="fw-bold mb-1">Have a quick question?</h6>
-                    <p class="small text-muted mb-2">Check out our Frequently Asked Questions.</p>
-                    <a href="#" class="btn btn-outline-secondary btn-sm">Visit FAQ</a>
-                </div>
-
             </div>
         </div>
     </div>
