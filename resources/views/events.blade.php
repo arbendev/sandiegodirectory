@@ -83,7 +83,7 @@
                                         @endif
                                     </div>
                                     <p class="small text-muted mb-1 text-truncate">
-                                        {{ Str::limit($event->description, 100) }}
+                                        {{ Str::limit(strip_tags($event->description), 100) }}
                                     </p>
                                     <div>
                                         @if($event->tags)
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="col-md-3 small text-muted">
                                     <div class="mb-1">
-                                        👥 Hosted by: {{ $event->listing->title ?? 'Business' }}
+                                        👥 Hosted by: {{ $event->listing->title ?? $event->user->name }}
                                     </div>
                                     <div class="mb-1">
                                         💵 Tickets: {{ $event->price_type === 'paid' ? '$' . $event->price : 'Free' }}

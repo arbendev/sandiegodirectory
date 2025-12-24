@@ -13,13 +13,13 @@
         </nav>
 
         {{-- HERO --}}
-        <div class="hero-card mb-4 p-0">
+        <div class="hero-card mb-4 p-0 position-relative" style="min-height: 300px;">
             <div class="event-hero-cover" style="background-image: url('{{ $event->image_path ? asset('storage/' . $event->image_path) : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80' }}'); background-size: cover; background-position: center; position: absolute; inset: 0; filter: brightness(0.6);"></div>
 
-            <div class="hero-content-overlap p-4" style="position: relative; z-index: 2;">
+            <div class="hero-content-overlap p-4 w-100 h-100 d-flex align-items-end" style="position: relative; z-index: 2; min-height: 300px;">
                 <div class="row g-3 align-items-end">
-                    <div class="col-md-8 d-flex">
-                        <div class="date-badge-lg me-3">
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="date-badge-lg me-3 flex-shrink-0">
                             <div class="month">{{ $event->start_datetime->format('M') }}</div>
                             <div class="day">{{ $event->start_datetime->format('d') }}</div>
                             <div class="dow">{{ strtoupper($event->start_datetime->format('D')) }}</div>
@@ -50,9 +50,12 @@
                             @endif
                         </div>
                         <div class="meta-text mt-1 small text-white-50">
-                            @if($event->listing)
-                                👤 Hosted by <a href="{{ route('profile.show', $event->listing->slug) }}" class="text-white text-decoration-underline">{{ $event->listing->title }}</a>
-                            @endif
+                             👤 Hosted by 
+                             @if($event->listing)
+                                <a href="{{ route('profile.show', $event->listing->slug) }}" class="text-white text-decoration-underline">{{ $event->listing->title }}</a>
+                             @else
+                                <span class="text-white">{{ $event->user->name }}</span>
+                             @endif
                         </div>
                     </div>
                 </div>
@@ -68,7 +71,7 @@
                 <div class="section-card">
                     <div class="section-label">About this event</div>
                     <div class="small mb-2" style="white-space: pre-line;">
-                        {{ $event->description }}
+                        {!! $event->description !!}
                     </div>
                 </div>
 
@@ -80,7 +83,6 @@
                 {{-- Event Details --}}
                 <div class="section-card">
                     <div class="section-label">Event details</div>
-
                     <div class="small mb-2">
                         <div class="fw-semibold">Date &amp; Time</div>
                         <div>{{ $event->start_datetime->format('l, F j, Y') }}</div>
@@ -100,14 +102,18 @@
                         @endif
                     </div>
                     
-                    @if($event->listing && ($event->listing->email || $event->listing->phone))
+                    @if(($event->listing && ($event->listing->email || $event->listing->phone)) || $event->user)
                     <div class="small mb-2">
                         <div class="fw-semibold">Contact</div>
-                        @if($event->listing->email)
-                            <div>Email: <a href="mailto:{{ $event->listing->email }}">{{ $event->listing->email }}</a></div>
-                        @endif
-                        @if($event->listing->phone)
-                            <div>Phone: <a href="tel:{{ $event->listing->phone }}">{{ $event->listing->phone }}</a></div>
+                        @if($event->listing)
+                            @if($event->listing->email)
+                                <div>Email: <a href="mailto:{{ $event->listing->email }}">{{ $event->listing->email }}</a></div>
+                            @endif
+                            @if($event->listing->phone)
+                                <div>Phone: <a href="tel:{{ $event->listing->phone }}">{{ $event->listing->phone }}</a></div>
+                            @endif
+                        @else
+                            <div>Email: <a href="mailto:{{ $event->user->email }}">{{ $event->user->email }}</a></div>
                         @endif
                     </div>
                     @endif
