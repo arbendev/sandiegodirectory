@@ -34,7 +34,15 @@ class WelcomeController extends Controller
         }
 
         // Fetch upcoming events
-        $upcomingEvents = Event::where('start_datetime', '>=', now())
+        // Fetch upcoming events
+        // Logic: Show if it ends in the future OR (if end_datetime is null, it starts in the future)
+        $upcomingEvents = Event::where(function($query) {
+                $query->where('end_datetime', '>=', now())
+                      ->orWhere(function($subQuery) {
+                          $subQuery->whereNull('end_datetime')
+                                   ->where('start_datetime', '>=', now());
+                      });
+            })
             ->orderBy('start_datetime', 'asc')
             ->take(4)
             ->get();

@@ -10,7 +10,10 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::with('listing')
-            ->where('start_datetime', '>=', now())
+            ->where(function ($query) {
+                $query->where('start_datetime', '>=', now())
+                    ->orWhere('end_datetime', '>=', now());
+            })
             ->orderBy('start_datetime', 'asc')
             ->paginate(10);
 
