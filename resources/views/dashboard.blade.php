@@ -139,9 +139,11 @@
                             <a href="{{ route('profile.photos') }}" class="quick-link-pill">
                                 🖼️ <span>Manage photos</span>
                             </a>
+                            {{-- 
                             <a href="#" class="quick-link-pill">
                                 💳 <span>Manage billing</span>
                             </a>
+                             --}}
                         </div>
                     </div>
 

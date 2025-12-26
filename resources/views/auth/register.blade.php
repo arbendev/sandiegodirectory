@@ -260,7 +260,19 @@
                 <div class="col-lg-4">
                     <div class="section-card">
                         <div class="section-label">Choose your plan</div>
-                        <div class="plan-card featured mb-3">
+
+                        <div class="plan-card featured mb-2">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <div class="fw-semibold">Basic Listing</div>
+                            </div>
+                            <div class="plan-price mb-1">$0 <span class="small text-muted">/ month</span></div>
+                             <div class="form-check small">
+                                <input class="form-check-input" type="radio" name="plan" id="plan_basic" value="basic" checked>
+                                <label class="form-check-label" for="plan_basic">Select Basic</label>
+                            </div>
+                        </div>
+
+                        <div class="plan-card mb-3">
                             <div class="d-flex justify-content-between align-items-center mb-1">
                                 <div class="fw-semibold">Featured Listing</div>
                                 <span class="pill active">Most Popular</span>
@@ -271,20 +283,11 @@
                                 <li>Photos & Events</li>
                             </ul>
                             <div class="form-check small">
-                                <input class="form-check-input" type="radio" name="plan" id="plan_featured" value="featured" checked>
+                                <input class="form-check-input" type="radio" name="plan" id="plan_featured" value="featured">
                                 <label class="form-check-label" for="plan_featured">Select Featured</label>
                             </div>
                         </div>
-                        <div class="plan-card mb-2">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="fw-semibold">Basic Listing</div>
-                            </div>
-                            <div class="plan-price mb-1">$0 <span class="small text-muted">/ month</span></div>
-                             <div class="form-check small">
-                                <input class="form-check-input" type="radio" name="plan" id="plan_basic" value="basic">
-                                <label class="form-check-label" for="plan_basic">Select Basic</label>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="section-card">
                         <div class="d-grid gap-2">

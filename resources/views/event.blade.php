@@ -14,9 +14,9 @@
 
         {{-- HERO --}}
         <div class="hero-card mb-4 p-0 position-relative" style="min-height: 300px;">
-            <div class="event-hero-cover" style="background-image: url('{{ $event->image_path ? asset('storage/' . $event->image_path) : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80' }}'); background-size: cover; background-position: center; position: absolute; inset: 0; filter: brightness(0.6);"></div>
+            <div class="" style="background-image: url('{{ $event->image_path ? asset('storage/' . $event->image_path) : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80' }}'); background-size: cover; background-position: center; position: absolute; inset: 0; filter: brightness(0.6);"></div>
 
-            <div class="hero-content-overlap p-4 w-100 h-100 d-flex align-items-end" style="position: relative; z-index: 2; min-height: 300px;">
+            <div class="p-4 w-100 h-100 d-flex align-items-end" style="position: relative; z-index: 2; min-height: 300px;">
                 <div class="row g-3 align-items-end">
                     <div class="col-md-8 d-flex align-items-center">
                         <div class="date-badge-lg me-3 flex-shrink-0">
@@ -50,12 +50,7 @@
                             @endif
                         </div>
                         <div class="meta-text mt-1 small text-white-50">
-                             👤 Hosted by 
-                             @if($event->listing)
-                                <a href="{{ route('profile.show', $event->listing->slug) }}" class="text-white text-decoration-underline">{{ $event->listing->title }}</a>
-                             @else
-                                <span class="text-white">{{ $event->user->name }}</span>
-                             @endif
+                      
                         </div>
                     </div>
                 </div>
@@ -146,5 +141,4 @@
 
             </div>
         </div>
-    </div>
 @endsection
