@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('temp');
-});
+Route::get('/', function () {return view('temp');});
 
 /*
 
@@ -29,12 +27,12 @@ Route::get('/category/{slug}', [App\Http\Controllers\CategoryController::class, 
 Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events.index');
 Route::get('/event/{slug}', [App\Http\Controllers\EventController::class, 'show'])->name('events.show');
 
-Route::post('/listings/{id}/reviews', [App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
-
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 Route::post('/subscribe', [App\Http\Controllers\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::get('/page/{slug}', [App\Http\Controllers\PageController::class, 'show'])->name('page.show');
+
+Route::post('/listings/{id}/reviews', [App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
 
 Auth::routes();
 
