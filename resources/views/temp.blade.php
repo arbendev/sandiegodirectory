@@ -15,7 +15,7 @@
     <div id="app">
         <div class="p5 m-5">
             <h2>This site is temporarily inactive due to an outstanding balance.<br />
-                Please contact <a href="mailto:contact@seractive.com">contact@seractive.com</a> for assistance.</h2>
+                Please contact <a href="mailto:contact@seractive.com">contact@seractive.com</a> to resolve access.</h2>
         </div>
     </div>
 </body>
