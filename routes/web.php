@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+/*
 Route::get('/', function () {
     return view('temp');
 });
 
-/*
+*/
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 Route::get('/search', [App\Http\Controllers\ListingController::class, 'search'])->name('search');
@@ -39,5 +40,3 @@ Route::get('/page/{slug}', [App\Http\Controllers\PageController::class, 'show'])
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-*/
