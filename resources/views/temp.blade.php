@@ -14,7 +14,8 @@
 <body>
     <div id="app">
         <div class="p5 m-5">
-            <h2>Inactice due to non-payment. Please email contact@seractive.com</h2>
+            <h2>This site is temporarily inactive due to an outstanding balance.<br />
+                Please contact <a href="mailto:contact@seractive.com">contact@seractive.com</a> for assistance.</h2>
         </div>
     </div>
 </body>
