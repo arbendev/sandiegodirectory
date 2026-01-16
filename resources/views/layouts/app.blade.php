@@ -149,8 +149,8 @@
                         <p class="small">
                             Get updates on new businesses, events, and local opportunities delivered to your inbox.
                         </p>
-                        
-                        @if(session('success'))
+
+                        @if (session('success'))
                             <div class="alert alert-success small p-2 mb-2">
                                 {{ session('success') }}
                             </div>
@@ -159,12 +159,13 @@
                         <form class="small" action="{{ route('newsletter.subscribe') }}" method="POST">
                             @csrf
                             <div class="input-group mb-2">
-                                <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+                                <input type="email" name="email" class="form-control"
+                                    placeholder="Your email address" required>
                                 <button class="btn btn-primary" type="submit">Subscribe</button>
                             </div>
-                             @error('email')
+                            @error('email')
                                 <div class="text-danger small mb-1">{{ $message }}</div>
-                             @enderror
+                            @enderror
                             <div class="form-text small">
                                 We'll never share your email with anyone else.
                             </div>
@@ -176,10 +177,12 @@
 
                 <div
                     class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-muted">
-                    <span>© 2025 San Diego Directory. All rights reserved.</span>
+                    <span>© 2026 The San Diego Directory. All rights reserved.</span>
                     <div class="d-flex gap-3 mt-2 mt-md-0">
-                        <a href="{{ route('page.show', 'privacy-policy') }}" class="text-decoration-none text-muted">Privacy Policy</a>
-                        <a href="{{ route('page.show', 'terms-of-service') }}" class="text-decoration-none text-muted">Terms of Service</a>
+                        <a href="{{ route('page.show', 'privacy-policy') }}"
+                            class="text-decoration-none text-muted">Privacy Policy</a>
+                        <a href="{{ route('page.show', 'terms-of-service') }}"
+                            class="text-decoration-none text-muted">Terms of Service</a>
                     </div>
                 </div>
             </div>
