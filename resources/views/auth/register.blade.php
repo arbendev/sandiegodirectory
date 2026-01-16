@@ -26,7 +26,7 @@
                                     </div>
                                     <h4 class="fw-bold">Regular User</h4>
                                     <p class="text-muted small">
-                                        Join to write reviews, save your favorite places, and connect with the community.
+                                        Join to write reviews and connect with the community.
                                     </p>
                                     <a href="{{ route('register', ['type' => 'user']) }}"
                                         class="btn btn-outline-primary w-100 stretched-link">Join as User</a>
