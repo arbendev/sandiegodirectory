@@ -12,7 +12,8 @@
         </nav>
 
         {{-- HERO --}}
-        <div class="hero-card mb-4 p-4 d-flex align-items-center" style="min-height: 200px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white;">
+        <div class="hero-card mb-4 p-4 d-flex align-items-center"
+            style="min-height: 200px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white;">
             <div>
                 <h1 class="h3 fw-bold mb-2">Get in Touch</h1>
                 <p class="mb-0 text-white-75">
@@ -27,8 +28,8 @@
             <div class="col-lg-8">
                 <div class="section-card">
                     <h5 class="fw-bold mb-3">Send us a message</h5>
-                    
-                    @if(session('success'))
+
+                    @if (session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
@@ -39,21 +40,24 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="name" class="form-label small fw-semibold">Your Name</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    value="{{ old('name') }}" required>
                                 @error('name')
                                     <div class="text-danger small mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="email" class="form-label small fw-semibold">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{ old('email') }}" required>
                                 @error('email')
                                     <div class="text-danger small mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="col-12">
                                 <label for="subject" class="form-label small fw-semibold">Subject</label>
-                                <input type="text" class="form-control" id="subject" name="subject" value="{{ old('subject') }}" required>
+                                <input type="text" class="form-control" id="subject" name="subject"
+                                    value="{{ old('subject') }}" required>
                                 @error('subject')
                                     <div class="text-danger small mt-1">{{ $message }}</div>
                                 @enderror
@@ -79,7 +83,8 @@
             <div class="col-lg-4">
                 <div class="section-card mb-3">
                     <h6 class="fw-bold mb-3">Contact Information</h6>
-                    
+
+                    {{-- 
                     <div class="mb-3">
                         <div class="fw-semibold small">Address</div>
                         <div class="small text-muted">
@@ -87,15 +92,17 @@
                             San Diego, CA 92101
                         </div>
                     </div>
+                    --}}
 
                     <div class="mb-3">
                         <div class="fw-semibold small">Email</div>
-                        <a href="mailto:support@sddirectory.com" class="small text-decoration-none">support@sddirectory.com</a>
+                        <a href="mailto:contact@thesandiegodirectory.com"
+                            class="small text-decoration-none">contact@thesandiegodirectory.com</a>
                     </div>
 
                     <div class="mb-3">
                         <div class="fw-semibold small">Phone</div>
-                        <a href="tel:+16195550123" class="small text-decoration-none">(619) 555-0123</a>
+                        <a href="tel:+16195550123" class="small text-decoration-none">(619) 840-9862</a>
                     </div>
                 </div>
             </div>
