@@ -37,3 +37,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/billing-portal', function (Illuminate\Http\Request $request) {
     return redirect($request->user()->billingPortalUrl(route('home')));
 })->middleware(['auth'])->name('billing.portal');
+
+Route::get('/debug-config', function () {
+    return response()->json([
+        'mail_driver' => config('mail.default'),
+        'markdown' => config('mail.markdown'),
+        'mailers' => config('mail.mailers'),
+    ]);
+});
