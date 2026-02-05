@@ -76,6 +76,10 @@ class RegisterController extends Controller
                 'phone' => ['required', 'string', 'max:50'],
                 'description' => ['required', 'string'],
             ]);
+
+            if (isset($data['plan']) && $data['plan'] === 'featured') {
+                $rules['payment_method'] = ['required', 'string'];
+            }
         }
 
         return Validator::make($data, $rules);
