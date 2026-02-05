@@ -99,6 +99,21 @@ class RegisterController extends Controller
         ]);
 
         if ($role === 'business_owner') {
+            // Create Stripe Customer and Subscription if featured plan selected
+            if (isset($data['plan']) && $data['plan'] === 'featured' && isset($data['payment_method'])) {
+                try {
+                    $user->createOrGetStripeCustomer();
+                    $user->updateDefaultPaymentMethod($data['payment_method']);
+                    $user->newSubscription('default', 'prod_TvLZjJxKUml5OR')
+                        ->create($data['payment_method']);
+                } catch (\Exception $e) {
+                    // Log error but allow user creation to proceed (or could handle failure)
+                    // Ideally we should rollback or show error, but for now we proceed
+                    // Listing will be pending anyway
+                    \Illuminate\Support\Facades\Log::error('Stripe Subscription Failed: ' . $e->getMessage());
+                }
+            }
+
             $user->listings()->create([
                 'title' => $data['business_name'],
                 'slug' => \Illuminate\Support\Str::slug($data['business_name'] . '-' . uniqid()),

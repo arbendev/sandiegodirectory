@@ -138,7 +138,8 @@
                 </div>
             </section>
 
-            <form method="POST" action="{{ route('register') }}">
+            <script src="https://js.stripe.com/v3/"></script>
+            <form method="POST" action="{{ route('register') }}" id="registration-form">
                 @csrf
                 <input type="hidden" name="role" value="business_owner">
 
@@ -278,21 +279,6 @@
                     <div class="col-lg-4">
                         <div class="section-card">
                             <div class="section-label">Choose your plan</div>
-
-                            {{-- 
-                            <div class="plan-card featured mb-2">
-                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <div class="fw-semibold">Basic Listing</div>
-                                </div>
-                                <div class="plan-price mb-1">$0 <span class="small text-muted">/ month</span></div>
-                                <div class="form-check small">
-                                    <input class="form-check-input" type="radio" name="plan" id="plan_basic"
-                                        value="basic" checked>
-                                    <label class="form-check-label" for="plan_basic">Select Basic</label>
-                                </div>
-                            </div>
-                            --}}
-
                             <div class="plan-card featured mb-3">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <div class="fw-semibold">Featured Listing</div>
@@ -312,9 +298,21 @@
                             </div>
 
                         </div>
+
+                        {{-- Payment Details --}}
+                        <div class="section-card">
+                            <div class="section-label">Payment Details</div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold">Credit or Debit Card</label>
+                                <div id="card-element" class="form-control form-control-sm p-2">
+                                    {{-- Stripe Element will be inserted here --}}
+                                </div>
+                                <div id="card-errors" role="alert" class="text-danger small mt-2"></div>
+                            </div>
+                        </div>
                         <div class="section-card">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary w-100">Complete Signup</button>
+                                <button type="submit" class="btn btn-primary w-100" id="submit-button">Complete Signup</button>
                                 <a href="{{ route('register') }}" class="btn btn-sm text-muted">Back to selection</a>
                             </div>
                         </div>
@@ -323,3 +321,68 @@
             </form>
         @endif
     @endsection
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (document.getElementById('card-element')) {
+                const stripe = Stripe('{{ env('STRIPE_KEY') }}');
+                const elements = stripe.elements();
+                const cardElement = elements.create('card', {
+                    style: {
+                        base: {
+                            fontSize: '14px',
+                            color: '#32325d',
+                            '::placeholder': {
+                                color: '#aab7c4',
+                            },
+                        },
+                    },
+                });
+
+                cardElement.mount('#card-element');
+
+                const form = document.getElementById('registration-form');
+                const submitButton = document.getElementById('submit-button');
+
+                form.addEventListener('submit', async (event) => {
+                    const plan = document.querySelector('input[name="plan"]:checked').value;
+                    
+                    // Only process payment if featured plan is selected
+                    if (plan === 'featured') {
+                        event.preventDefault();
+                        submitButton.disabled = true;
+
+                        const { paymentMethod, error } = await stripe.createPaymentMethod({
+                            type: 'card',
+                            card: cardElement,
+                            billing_details: {
+                                name: form.querySelector('input[name="business_name"]').value,
+                                email: form.querySelector('input[name="email"]').value,
+                                address: {
+                                    city: form.querySelector('input[name="city"]').value,
+                                    line1: form.querySelector('input[name="address"]').value,
+                                    postal_code: form.querySelector('input[name="zip"]').value,
+                                    state: 'CA', // Default
+                                }
+                            },
+                        });
+
+                        if (error) {
+                            const displayError = document.getElementById('card-errors');
+                            displayError.textContent = error.message;
+                            submitButton.disabled = false;
+                        } else {
+                            // Insert payment method ID into form
+                            const hiddenInput = document.createElement('input');
+                            hiddenInput.setAttribute('type', 'hidden');
+                            hiddenInput.setAttribute('name', 'payment_method');
+                            hiddenInput.setAttribute('value', paymentMethod.id);
+                            form.appendChild(hiddenInput);
+
+                            form.submit();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
