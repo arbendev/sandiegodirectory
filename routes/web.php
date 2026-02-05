@@ -33,3 +33,7 @@ Route::post('/listings/{id}/reviews', [App\Http\Controllers\ReviewController::cl
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/billing-portal', function (Illuminate\Http\Request $request) {
+    return $request->user()->billingPortalUrl(route('home'));
+})->middleware(['auth'])->name('billing.portal');
