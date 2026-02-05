@@ -19,7 +19,7 @@ class ListingController extends Controller
         $query = $request->input('q');
         
         $listings = Listing::with(['category', 'reviews'])
-            ->where('status', 'active')
+            ->active()
             ->where(function ($q) use ($query) {
                 $q->where('title', 'like', "%{$query}%")
                   ->orWhere('description', 'like', "%{$query}%")

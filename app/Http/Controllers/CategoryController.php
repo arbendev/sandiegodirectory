@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $listings = $category->listings()
             ->withCount('reviews')
             ->withAvg('reviews', 'rating')
-            ->where('status', 'active')
+            ->active()
             ->paginate(12);
         
         return view('category', compact('category', 'listings'));

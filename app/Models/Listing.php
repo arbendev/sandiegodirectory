@@ -34,4 +34,15 @@ class Listing extends Model
     {
         return $this->reviews()->avg('rating') ?: 0;
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active')
+            ->whereHas('user', function ($q) {
+                $q->whereHas('subscriptions', function ($sub) {
+                    $sub->where('type', 'default')
+                        ->whereIn('stripe_status', ['active', 'trialing']);
+                });
+            });
+    }
 }
