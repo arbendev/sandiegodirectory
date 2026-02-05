@@ -136,18 +136,12 @@
                                 <a href="{{ route('profile.photos') }}" class="quick-link-pill">
                                     🖼️ <span>Manage photos</span>
                                 </a>
-                                {{-- 
-                            <a href="#" class="quick-link-pill">
-                                💳 <span>Manage billing</span>
-                            </a>
-                             --}}
-
                              @if (auth()->user()->subscribed('default'))
                             <div class="mt-4 border-top pt-4">
-                                <h5 class="fw-bold">Billing & Subscription</h5>
+                                <h5 class="section-label">Billing & Subscription</h5>
                                 <p class="text-muted small">Manage your subscription, payment methods, and invoices.</p>
-                                <a href="{{ route('billing.portal') }}" class="btn btn-outline-primary">
-                                    Manage Billing
+                                <a href="{{ route('billing.portal') }}" class="quick-link-pill">
+                                    💳 <span>Manage billing</span>
                                 </a>
                             </div>
                         @endif
