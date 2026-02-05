@@ -302,6 +302,8 @@
                         {{-- Payment Details --}}
                         <div class="section-card">
                             <div class="section-label">Payment Details</div>
+                            <div class=""><img src="{{ asset('img/cc-logos.png') }}" alt="Payment Methods"></div>
+
                             <div class="mb-3">
                                 <label class="form-label small fw-semibold">Credit or Debit Card</label>
                                 <div id="card-element" class="form-control form-control-sm p-2">
