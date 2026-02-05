@@ -131,4 +131,23 @@ class RegisterController extends Controller
 
         return $user;
     }
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(\Illuminate\Http\Request $request, $user)
+    {
+        // Send notifications
+        try {
+            $user->notify(new \App\Notifications\WelcomeMember());
+            
+            \Illuminate\Support\Facades\Notification::route('mail', 'contact@thesandiegodirectory.com')
+                ->notify(new \App\Notifications\NewMemberAlert($user));
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Registration Notification Failed: ' . $e->getMessage());
+        }
+    }
 }
