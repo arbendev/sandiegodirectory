@@ -18,7 +18,7 @@ class WelcomeController extends Controller
             ->get();
 
         // Fetch featured listings, limit to 3. If no featured, just take random active ones.
-        $featuredListings = Listing::where('status', 'active')
+        $featuredListings = Listing::active()
             ->where('is_featured', true)
             ->with(['category', 'reviews'])
             ->inRandomOrder()
@@ -26,7 +26,7 @@ class WelcomeController extends Controller
             ->get();
 
         if ($featuredListings->isEmpty()) {
-            $featuredListings = Listing::where('status', 'active')
+            $featuredListings = Listing::active()
                 ->with(['category', 'reviews'])
                 ->latest()
                 ->take(3)
