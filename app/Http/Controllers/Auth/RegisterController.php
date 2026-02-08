@@ -108,7 +108,7 @@ class RegisterController extends Controller
             if (isset($data['plan']) && $data['plan'] === 'featured' && isset($data['payment_method'])) {
                 $user->createOrGetStripeCustomer();
                 $user->updateDefaultPaymentMethod($data['payment_method']);
-                $user->newSubscription('default', 'price_1SxVaWPTNp1cWrmLjlZFbBfr')
+                $user->newSubscription('default', 'price_1SybGFPTNp1cWrmLUq5wqsa9')
                     ->create($data['payment_method']);
             }
 
