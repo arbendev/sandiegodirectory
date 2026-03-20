@@ -105,10 +105,10 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label small fw-semibold">Phone Number <span class="text-muted fw-normal">(optional)</span></label>
+                                <label class="form-label small fw-semibold">Phone Number <span
+                                        class="text-muted fw-normal">(optional)</span></label>
                                 <input type="tel" name="phone"
-                                    class="form-control @error('phone') is-invalid @enderror"
-                                    placeholder="(555) 123-4567"
+                                    class="form-control @error('phone') is-invalid @enderror" placeholder=""
                                     value="{{ old('phone') }}" autocomplete="tel">
                                 @error('phone')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -313,7 +313,8 @@
                         {{-- Payment Details --}}
                         <div class="section-card">
                             <div class="section-label">Payment Details</div>
-                            <div class="mb-3"><img src="{{ asset('img/cc-logos.png') }}" alt="Payment Methods" class="img-fluid" style="height: 25px;"></div>
+                            <div class="mb-3"><img src="{{ asset('img/cc-logos.png') }}" alt="Payment Methods"
+                                    class="img-fluid" style="height: 25px;"></div>
 
                             <div class="mb-3">
                                 <label class="form-label small fw-semibold">Credit or Debit Card</label>
@@ -325,7 +326,8 @@
                         </div>
                         <div class="section-card">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary w-100" id="submit-button">Complete Signup</button>
+                                <button type="submit" class="btn btn-primary w-100" id="submit-button">Complete
+                                    Signup</button>
                                 <a href="{{ route('register') }}" class="btn btn-sm text-muted">Back to selection</a>
                             </div>
                         </div>
@@ -359,13 +361,16 @@
 
                 form.addEventListener('submit', async (event) => {
                     const plan = document.querySelector('input[name="plan"]:checked').value;
-                    
+
                     // Only process payment if featured plan is selected
                     if (plan === 'featured') {
                         event.preventDefault();
                         submitButton.disabled = true;
 
-                        const { paymentMethod, error } = await stripe.createPaymentMethod({
+                        const {
+                            paymentMethod,
+                            error
+                        } = await stripe.createPaymentMethod({
                             type: 'card',
                             card: cardElement,
                             billing_details: {
