@@ -98,10 +98,21 @@
                                 @enderror
                             </div>
 
-                            <div class="mb-4">
+                            <div class="mb-3">
                                 <label class="form-label small fw-semibold">Confirm Password</label>
                                 <input type="password" name="password_confirmation" class="form-control"
                                     placeholder="Re-type password" required autocomplete="new-password">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label small fw-semibold">Phone Number <span class="text-muted fw-normal">(optional)</span></label>
+                                <input type="tel" name="phone"
+                                    class="form-control @error('phone') is-invalid @enderror"
+                                    placeholder="(555) 123-4567"
+                                    value="{{ old('phone') }}" autocomplete="tel">
+                                @error('phone')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100 py-2 mb-3">

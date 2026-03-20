@@ -63,6 +63,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['nullable', 'string', 'max:50'],
         ];
 
         if (isset($data['role']) && $data['role'] === 'business_owner') {
@@ -100,6 +101,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $role,
+            'phone' => $data['phone'] ?? null,
         ]);
 
         if ($role === 'business_owner') {
